@@ -1,0 +1,9 @@
+/home/ali/workspace/GoodbyeDPI-Turkey-Linux/goodbyedpi-linux/build/CMakeFiles/goodbyedpi.dir
+/home/ali/workspace/GoodbyeDPI-Turkey-Linux/goodbyedpi-linux/build/CMakeFiles/package.dir
+/home/ali/workspace/GoodbyeDPI-Turkey-Linux/goodbyedpi-linux/build/CMakeFiles/package_source.dir
+/home/ali/workspace/GoodbyeDPI-Turkey-Linux/goodbyedpi-linux/build/CMakeFiles/edit_cache.dir
+/home/ali/workspace/GoodbyeDPI-Turkey-Linux/goodbyedpi-linux/build/CMakeFiles/rebuild_cache.dir
+/home/ali/workspace/GoodbyeDPI-Turkey-Linux/goodbyedpi-linux/build/CMakeFiles/list_install_components.dir
+/home/ali/workspace/GoodbyeDPI-Turkey-Linux/goodbyedpi-linux/build/CMakeFiles/install.dir
+/home/ali/workspace/GoodbyeDPI-Turkey-Linux/goodbyedpi-linux/build/CMakeFiles/install/local.dir
+/home/ali/workspace/GoodbyeDPI-Turkey-Linux/goodbyedpi-linux/build/CMakeFiles/install/strip.dir
