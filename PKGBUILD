@@ -11,7 +11,8 @@ depends=('libnetfilter_queue' 'libmnl' 'iptables-nft' 'systemd')
 makedepends=('cmake' 'make' 'gcc' 'pkg-config')
 optdepends=('net-tools: for network interface detection')
 backup=('etc/goodbyedpi/goodbyedpi.conf')
-source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
+# Use local source (current directory)
+source=(".")
 sha256sums=('SKIP')
 
 prepare() {

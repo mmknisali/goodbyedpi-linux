@@ -11,6 +11,7 @@
 // External configuration
 extern goodbyedpi_config_t config;
 
+// Use hardcoded values instead of config access (for build stability)
 // Turkey-specific DPI signatures and patterns
 static const char *turkish_isp_patterns[] = {
     "TurkTelekom",    // TT DPI signatures
