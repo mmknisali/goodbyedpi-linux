@@ -1,0 +1,49 @@
+version: '3.8'
+
+services:
+  goodbyedpi:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: goodbyedpi-linux:latest
+    container_name: goodbyedpi
+    
+    # IMPORTANT: Must use host network to intercept traffic
+    network_mode: host
+    
+    # Required capabilities for packet manipulation
+    cap_add:
+      - NET_ADMIN
+      - NET_RAW
+    
+    # Privileged mode (alternative to cap_add, more permissive)
+    # Uncomment if cap_add doesn't work
+    # privileged: true
+    
+    # Restart policy
+    restart: unless-stopped
+    
+    # Environment variables
+    environment:
+      - GOODBYEDPI_MODE=9
+      - GOODBYEDPI_VERBOSE=true
+    
+    # Volumes for configuration and logs
+    volumes:
+      - ./config/goodbyedpi.conf.example:/etc/goodbyedpi/goodbyedpi.conf:ro
+      - goodbyedpi-logs:/var/log/goodbyedpi
+    
+    # Custom command (override default if needed)
+    # Uncomment and modify as needed
+    # command: ["-9", "-v", "--logfile", "/var/log/goodbyedpi/goodbyedpi.log"]
+    
+    # Logging configuration
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
+
+volumes:
+  goodbyedpi-logs:
+    driver: local

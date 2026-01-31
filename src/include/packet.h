@@ -28,6 +28,18 @@
 #define TCP_HDR_LEN sizeof(struct tcphdr)
 #define UDP_HDR_LEN sizeof(struct udphdr)
 
+#ifndef GOODBYEDPI_PACKET_MACROS
+#define GOODBYEDPI_PACKET_MACROS
+
+
+#ifndef GOODBYEDPI_IP_TOS
+#define GOODBYEDPI_IP_TOS(ip_hdr)  ((ip_hdr)->tos)
+#endif
+
+#ifndef GOODBYEDPI_IP_TTL
+#define GOODBYEDPI_IP_TTL(ip_hdr)   ((ip_hdr)->ttl)
+#endif
+
 // IPv4 structure access macros
 #define IP_V(ip_hdr)    ((ip_hdr)->version)
 #define IP_HL(ip_hdr)   ((ip_hdr)->ihl)

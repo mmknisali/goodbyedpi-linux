@@ -2,6 +2,20 @@
 #include "include/logging.h"
 #include "include/config.h"
 #include "include/netfilter_capture.h"
+#include <linux/netfilter.h>
+#include <pthread.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <unistd.h>
+#include <getopt.h>
+#include <errno.h>
+#include <sys/wait.h>
+
+// Configuration defaults
+#define DEFAULT_QUEUE_NUM 0
+#define ERROR_RETRY_DELAY_US 100000  // 100ms
+#define STATS_REPORT_INTERVAL 1000   // Report every 1000 packets
 
 // Function declarations from daemon.c
 int install_signal_handlers(void);
@@ -11,18 +25,38 @@ int remove_pid_file(const char *pidfile);
 bool is_running(void);
 void stop_running(void);
 int setup_privileges(void);
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <unistd.h>
-#include <getopt.h>
-#include <errno.h>
 
-// Global variables
+// Forward declarations
+static int packet_process_callback(struct nfq_q_handle *qh, 
+                                struct nfgenmsg *nfmsg,
+                                struct nfq_data *nfa,
+                                void *data);
+int config_apply_legacy_mode(int mode, goodbyedpi_config_t *cfg);
+static int parse_arguments(int argc, char *argv[], goodbyedpi_config_t *cfg);
+static int setup_firewall_rules(void);
+static int cleanup_firewall_rules(void);
+void print_usage(const char *program_name);
+
+// Global variables with thread safety
 netfilter_context_t nfq_ctx;
-uint64_t packets_processed = 0;
-uint64_t packets_modified = 0;
-uint64_t bytes_processed = 0;
+static pthread_mutex_t stats_mutex = PTHREAD_MUTEX_INITIALIZER;
+static uint64_t packets_processed = 0;
+static uint64_t packets_modified = 0;
+static uint64_t bytes_processed = 0;
+
+// Helper function to execute system commands safely
+static int execute_command(const char *cmd) {
+    int ret = system(cmd);
+    if (ret == -1) {
+        log_error("Failed to execute: %s (errno=%d: %s)", cmd, errno, strerror(errno));
+        return -1;
+    }
+    if (WIFEXITED(ret) && WEXITSTATUS(ret) != 0) {
+        log_debug("Command exited with status %d: %s", WEXITSTATUS(ret), cmd);
+        return -1;
+    }
+    return 0;
+}
 
 // Main packet processing callback
 static int packet_process_callback(struct nfq_q_handle *qh, 
@@ -36,6 +70,9 @@ static int packet_process_callback(struct nfq_q_handle *qh,
     uint32_t packet_id;
     int verdict = NF_ACCEPT;
     
+    // Initialize packet structure to zero
+    memset(&packet, 0, sizeof(packet));
+    
     // Get packet metadata
     if (netfilter_get_packet_metadata(nfa, &packet_id, NULL, NULL, NULL, NULL) < 0) {
         log_debug("Failed to get packet metadata");
@@ -48,12 +85,16 @@ static int packet_process_callback(struct nfq_q_handle *qh,
         return NF_ACCEPT;
     }
     
+    // Update statistics with thread safety
+    pthread_mutex_lock(&stats_mutex);
     packets_processed++;
     bytes_processed += packet_len;
+    pthread_mutex_unlock(&stats_mutex);
     
     // Parse packet
     if (packet_parse(packet_data, packet_len, &packet) < 0) {
         log_debug("Failed to parse packet");
+        // No cleanup needed if packet_parse doesn't allocate on failure
         return NF_ACCEPT;
     }
     
@@ -64,7 +105,9 @@ static int packet_process_callback(struct nfq_q_handle *qh,
     // Apply packet processing logic
     if (packet_process(&packet) == 0) {
         // Packet was modified
+        pthread_mutex_lock(&stats_mutex);
         packets_modified++;
+        pthread_mutex_unlock(&stats_mutex);
         
         if (packet.raw_packet && packet.raw_packet_len > 0) {
             // Send modified packet
@@ -73,7 +116,7 @@ static int packet_process_callback(struct nfq_q_handle *qh,
         }
     }
     
-    // Cleanup
+    // Cleanup - always called
     packet_free(&packet);
     
     return verdict;
@@ -82,16 +125,43 @@ static int packet_process_callback(struct nfq_q_handle *qh,
 // Initialize netfilter with iptables rules
 static int setup_firewall_rules(void)
 {
-    // TODO: Set up iptables/nftables rules to redirect traffic to NFQUEUE
     log_info("Setting up firewall rules");
     
-    // For now, user must set up rules manually:
-    // iptables -I OUTPUT -p tcp --dport 80 -j NFQUEUE --queue-num 0
-    // iptables -I OUTPUT -p tcp --dport 443 -j NFQUEUE --queue-num 0
-    // iptables -I INPUT -p tcp --sport 80 -j NFQUEUE --queue-num 0
-    // iptables -I INPUT -p tcp --sport 443 -j NFQUEUE --queue-num 0
+    // Remove any existing rules (ignore errors - best effort cleanup)
+    system("iptables -D OUTPUT -p tcp --dport 80 -j NFQUEUE --queue-num 0 2>/dev/null");
+    system("iptables -D OUTPUT -p tcp --dport 443 -j NFQUEUE --queue-num 0 2>/dev/null");
+    system("iptables -D INPUT -p tcp --sport 80 -j NFQUEUE --queue-num 0 2>/dev/null");
+    system("iptables -D INPUT -p tcp --sport 443 -j NFQUEUE --queue-num 0 2>/dev/null");
     
-    log_warning("Note: Manual firewall rules required. See documentation.");
+    // Add OUTPUT rules for outgoing HTTP/HTTPS
+    if (execute_command("iptables -I OUTPUT -p tcp --dport 80 -j NFQUEUE --queue-num 0") < 0) {
+        log_error("Failed to add OUTPUT HTTP rule");
+        log_error("Make sure iptables is installed and you have root privileges");
+        return -1;
+    }
+    
+    if (execute_command("iptables -I OUTPUT -p tcp --dport 443 -j NFQUEUE --queue-num 0") < 0) {
+        log_error("Failed to add OUTPUT HTTPS rule");
+        cleanup_firewall_rules();
+        return -1;
+    }
+    
+    // Add INPUT rules for incoming HTTP/HTTPS responses
+    if (execute_command("iptables -I INPUT -p tcp --sport 80 -j NFQUEUE --queue-num 0") < 0) {
+        log_error("Failed to add INPUT HTTP rule");
+        cleanup_firewall_rules();
+        return -1;
+    }
+    
+    if (execute_command("iptables -I INPUT -p tcp --sport 443 -j NFQUEUE --queue-num 0") < 0) {
+        log_error("Failed to add INPUT HTTPS rule");
+        cleanup_firewall_rules();
+        return -1;
+    }
+    
+    log_info("Firewall rules configured successfully");
+    log_info("  - OUTPUT: tcp dport 80,443 -> NFQUEUE:0");
+    log_info("  - INPUT:  tcp sport 80,443 -> NFQUEUE:0");
     
     return 0;
 }
@@ -99,11 +169,15 @@ static int setup_firewall_rules(void)
 // Cleanup firewall rules
 static int cleanup_firewall_rules(void)
 {
-    // TODO: Clean up iptables/nftables rules
     log_info("Cleaning up firewall rules");
     
-    // For now, user must clean up manually
+    // Remove all our rules (ignore errors - best effort cleanup)
+    system("iptables -D OUTPUT -p tcp --dport 80 -j NFQUEUE --queue-num 0 2>/dev/null");
+    system("iptables -D OUTPUT -p tcp --dport 443 -j NFQUEUE --queue-num 0 2>/dev/null");
+    system("iptables -D INPUT -p tcp --sport 80 -j NFQUEUE --queue-num 0 2>/dev/null");
+    system("iptables -D INPUT -p tcp --sport 443 -j NFQUEUE --queue-num 0 2>/dev/null");
     
+    log_info("Firewall rules cleaned up");
     return 0;
 }
 
@@ -122,9 +196,10 @@ void print_usage(const char *program_name)
     printf("  -v, --verbose           Enable verbose output\n");
     printf("  --debug                 Enable debug output\n");
     printf("  --syslog                Use syslog for logging\n");
+    printf("  --queue-num NUM         NFQUEUE number (default: 0)\n");
     printf("\nFragmentation options:\n");
-    printf("  -f, --fragment-http SIZE    HTTP fragment size\n");
-    printf("  -e, --fragment-https SIZE   HTTPS fragment size\n");
+    printf("  -f, --fragment-http SIZE    HTTP fragment size (1-65535)\n");
+    printf("  -e, --fragment-https SIZE   HTTPS fragment size (1-65535)\n");
     printf("  --native-frag               Use native fragmentation\n");
     printf("  --reverse-frag              Use reverse fragmentation\n");
     printf("\nHeader manipulation:\n");
@@ -143,6 +218,7 @@ void print_usage(const char *program_name)
     printf("  -7                     Modern mode 7 (wrong-chksum)\n");
     printf("  -9                     Modern mode 9 (full features)\n");
     printf("\nNote: This tool requires root privileges for packet capture.\n");
+    printf("      Run with: sudo %s [OPTIONS]\n", program_name);
 }
 
 // Parse command line arguments
@@ -168,6 +244,7 @@ static int parse_arguments(int argc, char *argv[], goodbyedpi_config_t *cfg)
         {"dns-redirect-v4",  required_argument, 0, 1009},
         {"dns-redirect-v6",  required_argument, 0, 1010},
         {"dns-port",         required_argument, 0, 1011},
+        {"queue-num",        required_argument, 0, 1012},
         {0, 0, 0, 0}
     };
     
@@ -182,6 +259,8 @@ static int parse_arguments(int argc, char *argv[], goodbyedpi_config_t *cfg)
                 
             case 'V':
                 printf("GoodbyeDPI Linux %s\n", GOODBYEDPI_VERSION);
+                printf("Linux DPI bypass and circumvention utility\n");
+                printf("https://github.com/goodbyedpi-linux\n");
                 return 1;
                 
             case 'd':
@@ -196,11 +275,21 @@ static int parse_arguments(int argc, char *argv[], goodbyedpi_config_t *cfg)
                 break;
                 
             case 'p':
+                if (strlen(optarg) >= sizeof(cfg->pid_file)) {
+                    fprintf(stderr, "Error: PID file path too long (max %zu chars)\n", 
+                            sizeof(cfg->pid_file) - 1);
+                    return -1;
+                }
                 strncpy(cfg->pid_file, optarg, sizeof(cfg->pid_file) - 1);
                 cfg->pid_file[sizeof(cfg->pid_file) - 1] = '\0';
                 break;
                 
             case 'l':
+                if (strlen(optarg) >= sizeof(cfg->log_file)) {
+                    fprintf(stderr, "Error: Log file path too long (max %zu chars)\n", 
+                            sizeof(cfg->log_file) - 1);
+                    return -1;
+                }
                 strncpy(cfg->log_file, optarg, sizeof(cfg->log_file) - 1);
                 cfg->log_file[sizeof(cfg->log_file) - 1] = '\0';
                 break;
@@ -236,13 +325,29 @@ static int parse_arguments(int argc, char *argv[], goodbyedpi_config_t *cfg)
                 cfg->systemd_mode = true;
                 break;
                 
-            case 1002:
-                cfg->http_fragment_size = (unsigned int)atoi(optarg);
+            case 1002: {
+                char *endptr;
+                errno = 0;
+                long val = strtol(optarg, &endptr, 10);
+                if (*endptr != '\0' || errno != 0 || val < 1 || val > 65535) {
+                    fprintf(stderr, "Error: Invalid HTTP fragment size '%s' (must be 1-65535)\n", optarg);
+                    return -1;
+                }
+                cfg->http_fragment_size = (unsigned int)val;
                 break;
+            }
                 
-            case 1003:
-                cfg->https_fragment_size = (unsigned int)atoi(optarg);
+            case 1003: {
+                char *endptr;
+                errno = 0;
+                long val = strtol(optarg, &endptr, 10);
+                if (*endptr != '\0' || errno != 0 || val < 1 || val > 65535) {
+                    fprintf(stderr, "Error: Invalid HTTPS fragment size '%s' (must be 1-65535)\n", optarg);
+                    return -1;
+                }
+                cfg->https_fragment_size = (unsigned int)val;
                 break;
+            }
                 
             case 1004:
                 cfg->native_fragmentation = true;
@@ -265,20 +370,48 @@ static int parse_arguments(int argc, char *argv[], goodbyedpi_config_t *cfg)
                 break;
                 
             case 1009:
+                if (strlen(optarg) >= sizeof(cfg->dns_server_v4)) {
+                    fprintf(stderr, "Error: DNS server address too long\n");
+                    return -1;
+                }
                 cfg->dns_redirect_ipv4 = true;
                 strncpy(cfg->dns_server_v4, optarg, sizeof(cfg->dns_server_v4) - 1);
                 cfg->dns_server_v4[sizeof(cfg->dns_server_v4) - 1] = '\0';
                 break;
                 
             case 1010:
+                if (strlen(optarg) >= sizeof(cfg->dns_server_v6)) {
+                    fprintf(stderr, "Error: DNS server address too long\n");
+                    return -1;
+                }
                 cfg->dns_redirect_ipv6 = true;
                 strncpy(cfg->dns_server_v6, optarg, sizeof(cfg->dns_server_v6) - 1);
                 cfg->dns_server_v6[sizeof(cfg->dns_server_v6) - 1] = '\0';
                 break;
                 
-            case 1011:
-                cfg->dns_port_v4 = cfg->dns_port_v6 = (uint16_t)atoi(optarg);
+            case 1011: {
+                char *endptr;
+                errno = 0;
+                long val = strtol(optarg, &endptr, 10);
+                if (*endptr != '\0' || errno != 0 || val < 1 || val > 65535) {
+                    fprintf(stderr, "Error: Invalid DNS port '%s' (must be 1-65535)\n", optarg);
+                    return -1;
+                }
+                cfg->dns_port_v4 = cfg->dns_port_v6 = (uint16_t)val;
                 break;
+            }
+                
+            case 1012: {
+                char *endptr;
+                errno = 0;
+                long val = strtol(optarg, &endptr, 10);
+                if (*endptr != '\0' || errno != 0 || val < 0 || val > 65535) {
+                    fprintf(stderr, "Error: Invalid queue number '%s' (must be 0-65535)\n", optarg);
+                    return -1;
+                }
+                cfg->nfqueue_num = (uint16_t)val;
+                break;
+            }
                 
             case '?':
                 fprintf(stderr, "Use -h or --help for usage information.\n");
@@ -378,6 +511,13 @@ int main(int argc, char *argv[])
     printf("Linux DPI bypass and circumvention utility\n");
     printf("https://github.com/goodbyedpi-linux\n\n");
     
+    // Check for root privileges
+    if (geteuid() != 0) {
+        fprintf(stderr, "ERROR: This program must be run as root\n");
+        fprintf(stderr, "Try: sudo %s\n", argv[0]);
+        return EXIT_FAILURE;
+    }
+    
     // Initialize configuration with defaults
     if (config_load_defaults() < 0) {
         fprintf(stderr, "Failed to initialize configuration\n");
@@ -442,8 +582,8 @@ int main(int argc, char *argv[])
         return EXIT_FAILURE;
     }
     
-    // Initialize netfilter queue
-    if (netfilter_init(&nfq_ctx, 0, packet_process_callback) < 0) {
+    // Initialize netfilter queue with configurable queue number
+    if (netfilter_init(&nfq_ctx, config.nfqueue_num, packet_process_callback) < 0) {
         log_error("Failed to initialize netfilter queue");
         cleanup_firewall_rules();
         remove_pid_file(config.pid_file);
@@ -451,6 +591,7 @@ int main(int argc, char *argv[])
     }
     
     log_info("GoodbyeDPI started successfully");
+    log_info("Queue number: %u", config.nfqueue_num);
     log_info("Main loop started - processing packets");
     
     // Main packet processing loop
@@ -458,17 +599,31 @@ int main(int argc, char *argv[])
         if (netfilter_receive_packet(&nfq_ctx) < 0) {
             log_error("Error receiving packet");
             if (!is_running()) break;
-            usleep(100000);  // Sleep 100ms on error
+            usleep(ERROR_RETRY_DELAY_US);
             continue;
         }
         
         // Print stats periodically
-        if (packets_processed % 1000 == 0 && config.verbose_mode) {
-            log_packet_stats(packets_processed, packets_modified, bytes_processed);
+        if (packets_processed % STATS_REPORT_INTERVAL == 0 && config.verbose_mode) {
+            pthread_mutex_lock(&stats_mutex);
+            uint64_t processed = packets_processed;
+            uint64_t modified = packets_modified;
+            uint64_t bytes = bytes_processed;
+            pthread_mutex_unlock(&stats_mutex);
+            
+            log_packet_stats(processed, modified, bytes);
         }
     }
     
     log_info("Main loop ended");
+    
+    // Final statistics
+    pthread_mutex_lock(&stats_mutex);
+    log_info("Final statistics:");
+    log_info("  Packets processed: %lu", (unsigned long)packets_processed);
+    log_info("  Packets modified:  %lu", (unsigned long)packets_modified);
+    log_info("  Bytes processed:   %lu", (unsigned long)bytes_processed);
+    pthread_mutex_unlock(&stats_mutex);
     
     // Cleanup
     netfilter_cleanup(&nfq_ctx);

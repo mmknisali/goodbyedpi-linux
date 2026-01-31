@@ -170,6 +170,7 @@ typedef struct {
     unsigned int additional_ports[16];
     size_t additional_ports_count;
     uint16_t ip_ids[32];
+    uint16_t nfqueue_num;
     size_t ip_ids_count;
 } goodbyedpi_config_t;
 
