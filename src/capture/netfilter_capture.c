@@ -18,7 +18,6 @@ static int netfilter_callback(struct nfq_q_handle *qh,
     uint32_t packet_id = 0;
     uint8_t *packet_data = NULL;
     uint32_t packet_len = 0;
-    int verdict = NF_ACCEPT;
     
     // Get packet ID
     struct nfqnl_msg_packet_hdr *ph = nfq_get_msg_packet_hdr(nfa);
@@ -29,22 +28,19 @@ static int netfilter_callback(struct nfq_q_handle *qh,
     // Get packet data
     packet_len = nfq_get_payload(nfa, (unsigned char **)&packet_data);
     if (packet_len == 0) {
-        printf("Empty packet received\n");
-        goto send_verdict;
+        log_debug("Empty packet received, id=%u", packet_id);
+        return nfq_set_verdict(qh, packet_id, NF_ACCEPT, 0, NULL);
     }
     
-    printf("Received packet: id=%u, len=%u\n", packet_id, packet_len);
+    log_debug("Received packet: id=%u, len=%u", packet_id, packet_len);
     
-    // Call the user callback if set
+    // Call the user callback if set - user callback is responsible for sending verdict
     if (g_packet_callback) {
-        verdict = g_packet_callback(qh, nfmsg, nfa, data);
+        return g_packet_callback(qh, nfmsg, nfa, data);
     } else {
         // Default behavior: accept all packets
-        verdict = NF_ACCEPT;
+        return nfq_set_verdict(qh, packet_id, NF_ACCEPT, 0, NULL);
     }
-    
-send_verdict:
-    return nfq_set_verdict(qh, packet_id, verdict, 0, NULL);
 }
 
 // Initialize netfilter queue

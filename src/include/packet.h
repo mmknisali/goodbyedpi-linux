@@ -83,9 +83,9 @@ void packet_free(packet_t *packet);
 int packet_parse_ipv4(const uint8_t *data, size_t len, packet_t *packet);
 int packet_parse_ipv6(const uint8_t *data, size_t len, packet_t *packet);
 
-int packet_is_udp(const packet_t *packet);
-int packet_is_http(const packet_t *packet);
-int packet_is_https(const packet_t *packet);
+bool packet_is_udp(const packet_t *packet);
+bool packet_is_http(const packet_t *packet);
+bool packet_is_https(const packet_t *packet);
 
 // Packet modification functions
 int packet_copy(const packet_t *src, packet_t *dst);
@@ -113,5 +113,7 @@ uint32_t packet_checksum(const uint16_t *data, size_t len);
 uint16_t ip_checksum(const void *data, size_t len);
 uint16_t tcp_checksum(const void *data, size_t len, uint32_t src_ip, uint32_t dst_ip);
 void print_packet_info(const packet_t *packet);
+
+#endif /* GOODBYEDPI_PACKET_MACROS */
 
 #endif // PACKET_H

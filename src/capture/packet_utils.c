@@ -1,5 +1,4 @@
 #include <netinet/ip6.h>
-#include <netinet/ip6.h>
 #include <string.h>
 #include "../include/goodbyedpi.h"
 #include "../include/packet.h"
@@ -210,10 +209,10 @@ bool packet_is_tcp(const packet_t *packet)
 }
 
 // Check if packet is UDP
-int packet_is_udp(const packet_t *packet)
+bool packet_is_udp(const packet_t *packet)
 {
     if (!packet) {
-        return 0;
+        return false;
     }
     
     return (packet->type == PACKET_IPV4_UDP_DATA || 
@@ -221,10 +220,10 @@ int packet_is_udp(const packet_t *packet)
 }
 
 // Check if packet is HTTP
-int packet_is_http(const packet_t *packet)
+bool packet_is_http(const packet_t *packet)
 {
     if (!packet || !packet_is_tcp(packet) || !packet->payload) {
-        return 0;
+        return false;
     }
     
     // Check for common HTTP methods
@@ -238,10 +237,10 @@ int packet_is_http(const packet_t *packet)
 }
 
 // Check if packet is HTTPS
-int packet_is_https(const packet_t *packet)
+bool packet_is_https(const packet_t *packet)
 {
     if (!packet || !packet_is_tcp(packet)) {
-        return 0;
+        return false;
     }
     
     return (packet->dst_port == 443);

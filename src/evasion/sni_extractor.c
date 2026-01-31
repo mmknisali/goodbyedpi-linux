@@ -209,6 +209,7 @@ char *extract_sni_from_packet(const packet_t *packet)
     
     char *hostname = malloc(MAX_HOSTNAME_LEN);
     if (!hostname) {
+        log_error("Failed to allocate memory for hostname in extract_sni_from_packet");
         return NULL;
     }
     

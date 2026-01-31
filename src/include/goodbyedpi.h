@@ -10,10 +10,10 @@
 #include <signal.h>
 #include <errno.h>
 #include <sys/socket.h>
+#include <time.h>
 #include <netinet/in.h>
 #include <arpa/inet.h>
 #include <netinet/ip.h>
-#include <netinet/in.h>
 #include <netinet/tcp.h>
 #include <netinet/udp.h>
 
@@ -242,14 +242,15 @@ void config_print(void);
 // Missing function declarations
 // From string_utils.c
 void string_to_upper(char *str);
-void mix_case(char *str, size_t len);
 void safe_string_copy(char *dest, const char *src, size_t dest_size);
+char *stristr(const char *haystack, const char *needle);
 
 // From net_utils.c  
 int parse_ipv4_address(const char *ip_str, uint32_t *ip_addr);
 
 // From raw_socket.c
 int send_raw_packet(const uint8_t *packet_data, size_t packet_len, bool is_ipv6);
+void cleanup_raw_socket(void);
 
 // From header_mangle.c
 int modify_http_headers(packet_t *packet);
@@ -260,9 +261,6 @@ int parse_sni_extension(const uint8_t *ext_data, size_t ext_len, char *hostname,
 
 // From packet parsing
 bool packet_is_tcp(const packet_t *packet);
-
-// From sni_extractor.c
-int parse_sni_extension(const uint8_t *ext_data, size_t ext_len, char *hostname, size_t hostname_len);
 
 // From turkey_specific.c
 int turkey_header_obfuscation(packet_t *packet);
