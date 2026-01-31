@@ -173,6 +173,8 @@ Yazılımın nasıl ve hangi amaçla kullanılacağı tamamen kullanıcının so
 
 Geliştirici ve katkıda bulunanlar, yazılımın kullanımından doğabilecek hukuki veya cezai sonuçlardan sorumlu tutulamaz.
 
+Bu uygulamanın kullanımından doğan her türlü yasal sorumluluk kullanan kişiye aittir. Uygulama yalnızca eğitim ve araştırma amaçları ile yazılmış ve düzenlenmiş olup; bu uygulamayı bu şartlar altında kullanmak ya da kullanmamak kullanıcının kendi seçimidir. Açık kaynak kodlarının paylaşıldığı bu platformdaki düzenlenmiş bu proje, bilgi paylaşımı ve kodlama eğitimi amaçları ile yazılmış ve düzenlenmiştir.
+
 ---
 
 ## 📜 Lisans
