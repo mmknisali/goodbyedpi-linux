@@ -168,7 +168,6 @@ legacy_mode = 9
 - Ticari kullanım için uygun değildir
 - Geliştirici, bu yazılımın kullanımından doğabilecek herhangi bir zarardan sorumlu değildir
 - Kullanıcılar bu yazılımı kendi sorumluluklarında kullanırlar
-- Discord isimli programın seçilmesi, ilgili yazılımın DPI ile erişilemez kılınan bir program üzerinde denenmesi gerekmesidir
 - Yasal düzenlemelere uygun kullanım kullanıcının sorumluluğundadır
 > [!IMPORTANT]
 > Bu programın kullanımından doğan her türlü yasal sorumluluk kullanan kişiye aittir. Uygulama yalnızca eğitim ve araştırma amaçları ile yazılmış ve düzenlenmiş olup; bu uygulamayı bu şartlar altında kullanmak ya da kullanmamak kullanıcının kendi seçimidir. Açık kaynak kodlarının paylaşıldığı Github isimli platformdaki bu proje, bilgi paylaşımı ve kodlama eğitimi amaçları ile yazılmış ve düzenlenmiştir.
