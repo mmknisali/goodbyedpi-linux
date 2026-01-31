@@ -1,5 +1,7 @@
 file(REMOVE_RECURSE
   "CMakeFiles/goodbyedpi.dir/link.d"
+  "CMakeFiles/goodbyedpi.dir/src/capture/netfilter_capture.c.o"
+  "CMakeFiles/goodbyedpi.dir/src/capture/netfilter_capture.c.o.d"
   "CMakeFiles/goodbyedpi.dir/src/capture/packet_utils.c.o"
   "CMakeFiles/goodbyedpi.dir/src/capture/packet_utils.c.o.d"
   "CMakeFiles/goodbyedpi.dir/src/capture/raw_socket.c.o"

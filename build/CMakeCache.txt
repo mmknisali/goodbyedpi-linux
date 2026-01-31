@@ -25,7 +25,7 @@ CMAKE_AR:FILEPATH=/usr/bin/ar
 
 //Choose the type of build, options are: None Debug Release RelWithDebInfo
 // MinSizeRel ...
-CMAKE_BUILD_TYPE:STRING=
+CMAKE_BUILD_TYPE:STRING=Release
 
 //Enable/Disable color output during build.
 CMAKE_COLOR_MAKEFILE:BOOL=ON
@@ -42,7 +42,7 @@ CMAKE_C_COMPILER_AR:FILEPATH=/usr/bin/gcc-ar
 CMAKE_C_COMPILER_RANLIB:FILEPATH=/usr/bin/gcc-ranlib
 
 //Flags used by the C compiler during all build types.
-CMAKE_C_FLAGS:STRING=
+CMAKE_C_FLAGS:STRING=-march=x86-64 -mtune=generic -O2 -pipe -fno-plt -fexceptions         -Wp,-D_FORTIFY_SOURCE=3 -Wformat -Werror=format-security         -fstack-clash-protection -fcf-protection         -fno-omit-frame-pointer -mno-omit-leaf-frame-pointer -g -ffile-prefix-map=/home/ali/workspace/GoodbyeDPI-Turkey-Linux/goodbyedpi-linux/src=/usr/src/debug/goodbyedpi-linux -flto=auto
 
 //Flags used by the C compiler during DEBUG builds.
 CMAKE_C_FLAGS_DEBUG:STRING=-g
@@ -60,7 +60,7 @@ CMAKE_C_FLAGS_RELWITHDEBINFO:STRING=-O2 -g -DNDEBUG
 CMAKE_DLLTOOL:FILEPATH=CMAKE_DLLTOOL-NOTFOUND
 
 //Flags used by the linker during all build types.
-CMAKE_EXE_LINKER_FLAGS:STRING=
+CMAKE_EXE_LINKER_FLAGS:STRING=-Wl,-O1 -Wl,--sort-common -Wl,--as-needed -Wl,-z,relro -Wl,-z,now          -Wl,-z,pack-relative-relocs -flto=auto
 
 //Flags used by the linker during DEBUG builds.
 CMAKE_EXE_LINKER_FLAGS_DEBUG:STRING=
@@ -81,7 +81,7 @@ CMAKE_EXPORT_COMPILE_COMMANDS:BOOL=
 CMAKE_FIND_PACKAGE_REDIRECTS_DIR:STATIC=/home/ali/workspace/GoodbyeDPI-Turkey-Linux/goodbyedpi-linux/build/CMakeFiles/pkgRedirects
 
 //Install path prefix, prepended onto install directories.
-CMAKE_INSTALL_PREFIX:PATH=/usr/local
+CMAKE_INSTALL_PREFIX:PATH=/usr
 
 //Path to a program.
 CMAKE_LINKER:FILEPATH=/usr/bin/ld
@@ -91,7 +91,7 @@ CMAKE_MAKE_PROGRAM:FILEPATH=/usr/bin/make
 
 //Flags used by the linker during the creation of modules during
 // all build types.
-CMAKE_MODULE_LINKER_FLAGS:STRING=
+CMAKE_MODULE_LINKER_FLAGS:STRING=-Wl,-O1 -Wl,--sort-common -Wl,--as-needed -Wl,-z,relro -Wl,-z,now          -Wl,-z,pack-relative-relocs -flto=auto
 
 //Flags used by the linker during the creation of modules during
 // DEBUG builds.
@@ -156,7 +156,7 @@ CMAKE_READELF:FILEPATH=/usr/bin/readelf
 
 //Flags used by the linker during the creation of shared libraries
 // during all build types.
-CMAKE_SHARED_LINKER_FLAGS:STRING=
+CMAKE_SHARED_LINKER_FLAGS:STRING=-Wl,-O1 -Wl,--sort-common -Wl,--as-needed -Wl,-z,relro -Wl,-z,now          -Wl,-z,pack-relative-relocs -flto=auto
 
 //Flags used by the linker during the creation of shared libraries
 // during DEBUG builds.

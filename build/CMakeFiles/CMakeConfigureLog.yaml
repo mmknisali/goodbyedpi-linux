@@ -20,8 +20,8 @@ events:
     names:
       - "uname"
     candidate_directories:
-      - "/home/ali/.local/bin/"
       - "/home/ali/.opencode/bin/"
+      - "/home/ali/.local/bin/"
       - "/home/ali/.local/lib/hyde/"
       - "/home/ali/.nix-profile/bin/"
       - "/nix/var/nix/profiles/default/bin/"
@@ -34,8 +34,8 @@ events:
       - "/usr/bin/core_perl/"
       - "/bin/"
     searched_directories:
-      - "/home/ali/.local/bin/uname"
       - "/home/ali/.opencode/bin/uname"
+      - "/home/ali/.local/bin/uname"
       - "/home/ali/.local/lib/hyde/uname"
       - "/home/ali/.nix-profile/bin/uname"
       - "/nix/var/nix/profiles/default/bin/uname"
@@ -44,7 +44,6 @@ events:
     found: "/usr/bin/uname"
     search_context:
       ENV{PATH}:
-        - "/home/ali/.local/bin"
         - "/home/ali/.opencode/bin"
         - "/home/ali/.local/bin"
         - "/home/ali/.local/bin"
@@ -61,6 +60,7 @@ events:
         - "/usr/bin/site_perl"
         - "/usr/bin/vendor_perl"
         - "/usr/bin/core_perl"
+      CMAKE_INSTALL_PREFIX: "/usr"
   -
     kind: "message-v1"
     backtrace:
@@ -89,8 +89,8 @@ events:
       - "make"
       - "smake"
     candidate_directories:
-      - "/home/ali/.local/bin/"
       - "/home/ali/.opencode/bin/"
+      - "/home/ali/.local/bin/"
       - "/home/ali/.local/lib/hyde/"
       - "/home/ali/.nix-profile/bin/"
       - "/nix/var/nix/profiles/default/bin/"
@@ -102,8 +102,8 @@ events:
       - "/usr/bin/vendor_perl/"
       - "/usr/bin/core_perl/"
     searched_directories:
-      - "/home/ali/.local/bin/gmake"
       - "/home/ali/.opencode/bin/gmake"
+      - "/home/ali/.local/bin/gmake"
       - "/home/ali/.local/lib/hyde/gmake"
       - "/home/ali/.nix-profile/bin/gmake"
       - "/nix/var/nix/profiles/default/bin/gmake"
@@ -114,8 +114,8 @@ events:
       - "/usr/bin/site_perl/gmake"
       - "/usr/bin/vendor_perl/gmake"
       - "/usr/bin/core_perl/gmake"
-      - "/home/ali/.local/bin/make"
       - "/home/ali/.opencode/bin/make"
+      - "/home/ali/.local/bin/make"
       - "/home/ali/.local/lib/hyde/make"
       - "/home/ali/.nix-profile/bin/make"
       - "/nix/var/nix/profiles/default/bin/make"
@@ -124,7 +124,6 @@ events:
     found: "/usr/bin/make"
     search_context:
       ENV{PATH}:
-        - "/home/ali/.local/bin"
         - "/home/ali/.opencode/bin"
         - "/home/ali/.local/bin"
         - "/home/ali/.local/bin"
@@ -141,6 +140,7 @@ events:
         - "/usr/bin/site_perl"
         - "/usr/bin/vendor_perl"
         - "/usr/bin/core_perl"
+      CMAKE_INSTALL_PREFIX: "/usr"
   -
     kind: "find-v1"
     backtrace:
@@ -167,8 +167,8 @@ events:
       - "icx"
       - "clang"
     candidate_directories:
-      - "/home/ali/.local/bin/"
       - "/home/ali/.opencode/bin/"
+      - "/home/ali/.local/bin/"
       - "/home/ali/.local/lib/hyde/"
       - "/home/ali/.nix-profile/bin/"
       - "/nix/var/nix/profiles/default/bin/"
@@ -180,8 +180,8 @@ events:
       - "/usr/bin/vendor_perl/"
       - "/usr/bin/core_perl/"
     searched_directories:
-      - "/home/ali/.local/bin/cc"
       - "/home/ali/.opencode/bin/cc"
+      - "/home/ali/.local/bin/cc"
       - "/home/ali/.local/lib/hyde/cc"
       - "/home/ali/.nix-profile/bin/cc"
       - "/nix/var/nix/profiles/default/bin/cc"
@@ -190,7 +190,6 @@ events:
     found: "/usr/bin/cc"
     search_context:
       ENV{PATH}:
-        - "/home/ali/.local/bin"
         - "/home/ali/.opencode/bin"
         - "/home/ali/.local/bin"
         - "/home/ali/.local/bin"
@@ -207,6 +206,7 @@ events:
         - "/usr/bin/site_perl"
         - "/usr/bin/vendor_perl"
         - "/usr/bin/core_perl"
+      CMAKE_INSTALL_PREFIX: "/usr"
   -
     kind: "find-v1"
     backtrace:
@@ -234,7 +234,6 @@ events:
     found: "/usr/share/cmake/Modules/CMakeCCompilerId.c.in"
     search_context:
       ENV{PATH}:
-        - "/home/ali/.local/bin"
         - "/home/ali/.opencode/bin"
         - "/home/ali/.local/bin"
         - "/home/ali/.local/bin"
@@ -251,6 +250,7 @@ events:
         - "/usr/bin/site_perl"
         - "/usr/bin/vendor_perl"
         - "/usr/bin/core_perl"
+      CMAKE_INSTALL_PREFIX: "/usr"
   -
     kind: "message-v1"
     backtrace:
@@ -261,7 +261,7 @@ events:
     message: |
       Compiling the C compiler identification source file "CMakeCCompilerId.c" succeeded.
       Compiler: /usr/bin/cc 
-      Build flags: 
+      Build flags: -march=x86-64;-mtune=generic;-O2;-pipe;-fno-plt;-fexceptions;-Wp,-D_FORTIFY_SOURCE=3;-Wformat;-Werror=format-security;-fstack-clash-protection;-fcf-protection;-fno-omit-frame-pointer;-mno-omit-leaf-frame-pointer;-g;-ffile-prefix-map=/home/ali/workspace/GoodbyeDPI-Turkey-Linux/goodbyedpi-linux/src=/usr/src/debug/goodbyedpi-linux;-flto=auto
       Id flags:  
       
       The output was:
@@ -294,8 +294,8 @@ events:
       - "ar"
     candidate_directories:
       - "/usr/bin/"
-      - "/home/ali/.local/bin/"
       - "/home/ali/.opencode/bin/"
+      - "/home/ali/.local/bin/"
       - "/home/ali/.local/lib/hyde/"
       - "/home/ali/.nix-profile/bin/"
       - "/nix/var/nix/profiles/default/bin/"
@@ -308,7 +308,6 @@ events:
     found: "/usr/bin/ar"
     search_context:
       ENV{PATH}:
-        - "/home/ali/.local/bin"
         - "/home/ali/.opencode/bin"
         - "/home/ali/.local/bin"
         - "/home/ali/.local/bin"
@@ -325,6 +324,7 @@ events:
         - "/usr/bin/site_perl"
         - "/usr/bin/vendor_perl"
         - "/usr/bin/core_perl"
+      CMAKE_INSTALL_PREFIX: "/usr"
   -
     kind: "find-v1"
     backtrace:
@@ -346,8 +346,8 @@ events:
       - "ranlib"
     candidate_directories:
       - "/usr/bin/"
-      - "/home/ali/.local/bin/"
       - "/home/ali/.opencode/bin/"
+      - "/home/ali/.local/bin/"
       - "/home/ali/.local/lib/hyde/"
       - "/home/ali/.nix-profile/bin/"
       - "/nix/var/nix/profiles/default/bin/"
@@ -360,7 +360,6 @@ events:
     found: "/usr/bin/ranlib"
     search_context:
       ENV{PATH}:
-        - "/home/ali/.local/bin"
         - "/home/ali/.opencode/bin"
         - "/home/ali/.local/bin"
         - "/home/ali/.local/bin"
@@ -377,6 +376,7 @@ events:
         - "/usr/bin/site_perl"
         - "/usr/bin/vendor_perl"
         - "/usr/bin/core_perl"
+      CMAKE_INSTALL_PREFIX: "/usr"
   -
     kind: "find-v1"
     backtrace:
@@ -398,8 +398,8 @@ events:
       - "strip"
     candidate_directories:
       - "/usr/bin/"
-      - "/home/ali/.local/bin/"
       - "/home/ali/.opencode/bin/"
+      - "/home/ali/.local/bin/"
       - "/home/ali/.local/lib/hyde/"
       - "/home/ali/.nix-profile/bin/"
       - "/nix/var/nix/profiles/default/bin/"
@@ -412,7 +412,6 @@ events:
     found: "/usr/bin/strip"
     search_context:
       ENV{PATH}:
-        - "/home/ali/.local/bin"
         - "/home/ali/.opencode/bin"
         - "/home/ali/.local/bin"
         - "/home/ali/.local/bin"
@@ -429,6 +428,7 @@ events:
         - "/usr/bin/site_perl"
         - "/usr/bin/vendor_perl"
         - "/usr/bin/core_perl"
+      CMAKE_INSTALL_PREFIX: "/usr"
   -
     kind: "find-v1"
     backtrace:
@@ -450,8 +450,8 @@ events:
       - "ld"
     candidate_directories:
       - "/usr/bin/"
-      - "/home/ali/.local/bin/"
       - "/home/ali/.opencode/bin/"
+      - "/home/ali/.local/bin/"
       - "/home/ali/.local/lib/hyde/"
       - "/home/ali/.nix-profile/bin/"
       - "/nix/var/nix/profiles/default/bin/"
@@ -464,7 +464,6 @@ events:
     found: "/usr/bin/ld"
     search_context:
       ENV{PATH}:
-        - "/home/ali/.local/bin"
         - "/home/ali/.opencode/bin"
         - "/home/ali/.local/bin"
         - "/home/ali/.local/bin"
@@ -481,6 +480,7 @@ events:
         - "/usr/bin/site_perl"
         - "/usr/bin/vendor_perl"
         - "/usr/bin/core_perl"
+      CMAKE_INSTALL_PREFIX: "/usr"
   -
     kind: "find-v1"
     backtrace:
@@ -502,8 +502,8 @@ events:
       - "nm"
     candidate_directories:
       - "/usr/bin/"
-      - "/home/ali/.local/bin/"
       - "/home/ali/.opencode/bin/"
+      - "/home/ali/.local/bin/"
       - "/home/ali/.local/lib/hyde/"
       - "/home/ali/.nix-profile/bin/"
       - "/nix/var/nix/profiles/default/bin/"
@@ -516,7 +516,6 @@ events:
     found: "/usr/bin/nm"
     search_context:
       ENV{PATH}:
-        - "/home/ali/.local/bin"
         - "/home/ali/.opencode/bin"
         - "/home/ali/.local/bin"
         - "/home/ali/.local/bin"
@@ -533,6 +532,7 @@ events:
         - "/usr/bin/site_perl"
         - "/usr/bin/vendor_perl"
         - "/usr/bin/core_perl"
+      CMAKE_INSTALL_PREFIX: "/usr"
   -
     kind: "find-v1"
     backtrace:
@@ -554,8 +554,8 @@ events:
       - "objdump"
     candidate_directories:
       - "/usr/bin/"
-      - "/home/ali/.local/bin/"
       - "/home/ali/.opencode/bin/"
+      - "/home/ali/.local/bin/"
       - "/home/ali/.local/lib/hyde/"
       - "/home/ali/.nix-profile/bin/"
       - "/nix/var/nix/profiles/default/bin/"
@@ -568,7 +568,6 @@ events:
     found: "/usr/bin/objdump"
     search_context:
       ENV{PATH}:
-        - "/home/ali/.local/bin"
         - "/home/ali/.opencode/bin"
         - "/home/ali/.local/bin"
         - "/home/ali/.local/bin"
@@ -585,6 +584,7 @@ events:
         - "/usr/bin/site_perl"
         - "/usr/bin/vendor_perl"
         - "/usr/bin/core_perl"
+      CMAKE_INSTALL_PREFIX: "/usr"
   -
     kind: "find-v1"
     backtrace:
@@ -606,8 +606,8 @@ events:
       - "objcopy"
     candidate_directories:
       - "/usr/bin/"
-      - "/home/ali/.local/bin/"
       - "/home/ali/.opencode/bin/"
+      - "/home/ali/.local/bin/"
       - "/home/ali/.local/lib/hyde/"
       - "/home/ali/.nix-profile/bin/"
       - "/nix/var/nix/profiles/default/bin/"
@@ -620,7 +620,6 @@ events:
     found: "/usr/bin/objcopy"
     search_context:
       ENV{PATH}:
-        - "/home/ali/.local/bin"
         - "/home/ali/.opencode/bin"
         - "/home/ali/.local/bin"
         - "/home/ali/.local/bin"
@@ -637,6 +636,7 @@ events:
         - "/usr/bin/site_perl"
         - "/usr/bin/vendor_perl"
         - "/usr/bin/core_perl"
+      CMAKE_INSTALL_PREFIX: "/usr"
   -
     kind: "find-v1"
     backtrace:
@@ -658,8 +658,8 @@ events:
       - "readelf"
     candidate_directories:
       - "/usr/bin/"
-      - "/home/ali/.local/bin/"
       - "/home/ali/.opencode/bin/"
+      - "/home/ali/.local/bin/"
       - "/home/ali/.local/lib/hyde/"
       - "/home/ali/.nix-profile/bin/"
       - "/nix/var/nix/profiles/default/bin/"
@@ -672,7 +672,6 @@ events:
     found: "/usr/bin/readelf"
     search_context:
       ENV{PATH}:
-        - "/home/ali/.local/bin"
         - "/home/ali/.opencode/bin"
         - "/home/ali/.local/bin"
         - "/home/ali/.local/bin"
@@ -689,6 +688,7 @@ events:
         - "/usr/bin/site_perl"
         - "/usr/bin/vendor_perl"
         - "/usr/bin/core_perl"
+      CMAKE_INSTALL_PREFIX: "/usr"
   -
     kind: "find-v1"
     backtrace:
@@ -710,8 +710,8 @@ events:
       - "dlltool"
     candidate_directories:
       - "/usr/bin/"
-      - "/home/ali/.local/bin/"
       - "/home/ali/.opencode/bin/"
+      - "/home/ali/.local/bin/"
       - "/home/ali/.local/lib/hyde/"
       - "/home/ali/.nix-profile/bin/"
       - "/nix/var/nix/profiles/default/bin/"
@@ -723,8 +723,8 @@ events:
       - "/usr/bin/core_perl/"
     searched_directories:
       - "/usr/bin/dlltool"
-      - "/home/ali/.local/bin/dlltool"
       - "/home/ali/.opencode/bin/dlltool"
+      - "/home/ali/.local/bin/dlltool"
       - "/home/ali/.local/lib/hyde/dlltool"
       - "/home/ali/.nix-profile/bin/dlltool"
       - "/nix/var/nix/profiles/default/bin/dlltool"
@@ -737,7 +737,6 @@ events:
     found: false
     search_context:
       ENV{PATH}:
-        - "/home/ali/.local/bin"
         - "/home/ali/.opencode/bin"
         - "/home/ali/.local/bin"
         - "/home/ali/.local/bin"
@@ -754,6 +753,7 @@ events:
         - "/usr/bin/site_perl"
         - "/usr/bin/vendor_perl"
         - "/usr/bin/core_perl"
+      CMAKE_INSTALL_PREFIX: "/usr"
   -
     kind: "find-v1"
     backtrace:
@@ -775,8 +775,8 @@ events:
       - "addr2line"
     candidate_directories:
       - "/usr/bin/"
-      - "/home/ali/.local/bin/"
       - "/home/ali/.opencode/bin/"
+      - "/home/ali/.local/bin/"
       - "/home/ali/.local/lib/hyde/"
       - "/home/ali/.nix-profile/bin/"
       - "/nix/var/nix/profiles/default/bin/"
@@ -789,7 +789,6 @@ events:
     found: "/usr/bin/addr2line"
     search_context:
       ENV{PATH}:
-        - "/home/ali/.local/bin"
         - "/home/ali/.opencode/bin"
         - "/home/ali/.local/bin"
         - "/home/ali/.local/bin"
@@ -806,6 +805,7 @@ events:
         - "/usr/bin/site_perl"
         - "/usr/bin/vendor_perl"
         - "/usr/bin/core_perl"
+      CMAKE_INSTALL_PREFIX: "/usr"
   -
     kind: "find-v1"
     backtrace:
@@ -827,8 +827,8 @@ events:
       - "tapi"
     candidate_directories:
       - "/usr/bin/"
-      - "/home/ali/.local/bin/"
       - "/home/ali/.opencode/bin/"
+      - "/home/ali/.local/bin/"
       - "/home/ali/.local/lib/hyde/"
       - "/home/ali/.nix-profile/bin/"
       - "/nix/var/nix/profiles/default/bin/"
@@ -840,8 +840,8 @@ events:
       - "/usr/bin/core_perl/"
     searched_directories:
       - "/usr/bin/tapi"
-      - "/home/ali/.local/bin/tapi"
       - "/home/ali/.opencode/bin/tapi"
+      - "/home/ali/.local/bin/tapi"
       - "/home/ali/.local/lib/hyde/tapi"
       - "/home/ali/.nix-profile/bin/tapi"
       - "/nix/var/nix/profiles/default/bin/tapi"
@@ -854,7 +854,6 @@ events:
     found: false
     search_context:
       ENV{PATH}:
-        - "/home/ali/.local/bin"
         - "/home/ali/.opencode/bin"
         - "/home/ali/.local/bin"
         - "/home/ali/.local/bin"
@@ -871,6 +870,7 @@ events:
         - "/usr/bin/site_perl"
         - "/usr/bin/vendor_perl"
         - "/usr/bin/core_perl"
+      CMAKE_INSTALL_PREFIX: "/usr"
   -
     kind: "find-v1"
     backtrace:
@@ -895,8 +895,8 @@ events:
       - "gcc-ar"
     candidate_directories:
       - "/usr/bin/"
-      - "/home/ali/.local/bin/"
       - "/home/ali/.opencode/bin/"
+      - "/home/ali/.local/bin/"
       - "/home/ali/.local/lib/hyde/"
       - "/home/ali/.nix-profile/bin/"
       - "/nix/var/nix/profiles/default/bin/"
@@ -908,8 +908,8 @@ events:
       - "/usr/bin/core_perl/"
     searched_directories:
       - "/usr/bin/gcc-ar-15.2"
-      - "/home/ali/.local/bin/gcc-ar-15.2"
       - "/home/ali/.opencode/bin/gcc-ar-15.2"
+      - "/home/ali/.local/bin/gcc-ar-15.2"
       - "/home/ali/.local/lib/hyde/gcc-ar-15.2"
       - "/home/ali/.nix-profile/bin/gcc-ar-15.2"
       - "/nix/var/nix/profiles/default/bin/gcc-ar-15.2"
@@ -920,8 +920,8 @@ events:
       - "/usr/bin/vendor_perl/gcc-ar-15.2"
       - "/usr/bin/core_perl/gcc-ar-15.2"
       - "/usr/bin/gcc-ar-15"
-      - "/home/ali/.local/bin/gcc-ar-15"
       - "/home/ali/.opencode/bin/gcc-ar-15"
+      - "/home/ali/.local/bin/gcc-ar-15"
       - "/home/ali/.local/lib/hyde/gcc-ar-15"
       - "/home/ali/.nix-profile/bin/gcc-ar-15"
       - "/nix/var/nix/profiles/default/bin/gcc-ar-15"
@@ -932,8 +932,8 @@ events:
       - "/usr/bin/vendor_perl/gcc-ar-15"
       - "/usr/bin/core_perl/gcc-ar-15"
       - "/usr/bin/gcc-ar15"
-      - "/home/ali/.local/bin/gcc-ar15"
       - "/home/ali/.opencode/bin/gcc-ar15"
+      - "/home/ali/.local/bin/gcc-ar15"
       - "/home/ali/.local/lib/hyde/gcc-ar15"
       - "/home/ali/.nix-profile/bin/gcc-ar15"
       - "/nix/var/nix/profiles/default/bin/gcc-ar15"
@@ -946,7 +946,6 @@ events:
     found: "/usr/bin/gcc-ar"
     search_context:
       ENV{PATH}:
-        - "/home/ali/.local/bin"
         - "/home/ali/.opencode/bin"
         - "/home/ali/.local/bin"
         - "/home/ali/.local/bin"
@@ -963,6 +962,7 @@ events:
         - "/usr/bin/site_perl"
         - "/usr/bin/vendor_perl"
         - "/usr/bin/core_perl"
+      CMAKE_INSTALL_PREFIX: "/usr"
   -
     kind: "find-v1"
     backtrace:
@@ -987,8 +987,8 @@ events:
       - "gcc-ranlib"
     candidate_directories:
       - "/usr/bin/"
-      - "/home/ali/.local/bin/"
       - "/home/ali/.opencode/bin/"
+      - "/home/ali/.local/bin/"
       - "/home/ali/.local/lib/hyde/"
       - "/home/ali/.nix-profile/bin/"
       - "/nix/var/nix/profiles/default/bin/"
@@ -1000,8 +1000,8 @@ events:
       - "/usr/bin/core_perl/"
     searched_directories:
       - "/usr/bin/gcc-ranlib-15.2"
-      - "/home/ali/.local/bin/gcc-ranlib-15.2"
       - "/home/ali/.opencode/bin/gcc-ranlib-15.2"
+      - "/home/ali/.local/bin/gcc-ranlib-15.2"
       - "/home/ali/.local/lib/hyde/gcc-ranlib-15.2"
       - "/home/ali/.nix-profile/bin/gcc-ranlib-15.2"
       - "/nix/var/nix/profiles/default/bin/gcc-ranlib-15.2"
@@ -1012,8 +1012,8 @@ events:
       - "/usr/bin/vendor_perl/gcc-ranlib-15.2"
       - "/usr/bin/core_perl/gcc-ranlib-15.2"
       - "/usr/bin/gcc-ranlib-15"
-      - "/home/ali/.local/bin/gcc-ranlib-15"
       - "/home/ali/.opencode/bin/gcc-ranlib-15"
+      - "/home/ali/.local/bin/gcc-ranlib-15"
       - "/home/ali/.local/lib/hyde/gcc-ranlib-15"
       - "/home/ali/.nix-profile/bin/gcc-ranlib-15"
       - "/nix/var/nix/profiles/default/bin/gcc-ranlib-15"
@@ -1024,8 +1024,8 @@ events:
       - "/usr/bin/vendor_perl/gcc-ranlib-15"
       - "/usr/bin/core_perl/gcc-ranlib-15"
       - "/usr/bin/gcc-ranlib15"
-      - "/home/ali/.local/bin/gcc-ranlib15"
       - "/home/ali/.opencode/bin/gcc-ranlib15"
+      - "/home/ali/.local/bin/gcc-ranlib15"
       - "/home/ali/.local/lib/hyde/gcc-ranlib15"
       - "/home/ali/.nix-profile/bin/gcc-ranlib15"
       - "/nix/var/nix/profiles/default/bin/gcc-ranlib15"
@@ -1038,7 +1038,6 @@ events:
     found: "/usr/bin/gcc-ranlib"
     search_context:
       ENV{PATH}:
-        - "/home/ali/.local/bin"
         - "/home/ali/.opencode/bin"
         - "/home/ali/.local/bin"
         - "/home/ali/.local/bin"
@@ -1055,6 +1054,7 @@ events:
         - "/usr/bin/site_perl"
         - "/usr/bin/vendor_perl"
         - "/usr/bin/core_perl"
+      CMAKE_INSTALL_PREFIX: "/usr"
   -
     kind: "try_compile-v1"
     backtrace:
@@ -1064,23 +1064,23 @@ events:
     checks:
       - "Detecting C compiler ABI info"
     directories:
-      source: "/home/ali/workspace/GoodbyeDPI-Turkey-Linux/goodbyedpi-linux/build/CMakeFiles/CMakeScratch/TryCompile-1jmiKX"
-      binary: "/home/ali/workspace/GoodbyeDPI-Turkey-Linux/goodbyedpi-linux/build/CMakeFiles/CMakeScratch/TryCompile-1jmiKX"
+      source: "/home/ali/workspace/GoodbyeDPI-Turkey-Linux/goodbyedpi-linux/build/CMakeFiles/CMakeScratch/TryCompile-chYKKm"
+      binary: "/home/ali/workspace/GoodbyeDPI-Turkey-Linux/goodbyedpi-linux/build/CMakeFiles/CMakeScratch/TryCompile-chYKKm"
     cmakeVariables:
-      CMAKE_C_FLAGS: ""
+      CMAKE_C_FLAGS: "-march=x86-64 -mtune=generic -O2 -fno-plt -fexceptions         -Wp,-D_FORTIFY_SOURCE=3 -Wformat         -fstack-clash-protection -fcf-protection         -fno-omit-frame-pointer -mno-omit-leaf-frame-pointer -g -ffile-prefix-map=/home/ali/workspace/GoodbyeDPI-Turkey-Linux/goodbyedpi-linux/src=/usr/src/debug/goodbyedpi-linux -flto=auto"
       CMAKE_C_FLAGS_DEBUG: "-g"
-      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_EXE_LINKER_FLAGS: "-Wl,-O1 -Wl,--sort-common -Wl,--as-needed -Wl,-z,relro -Wl,-z,now          -Wl,-z,pack-relative-relocs -flto=auto"
     buildResult:
       variable: "CMAKE_C_ABI_COMPILED"
       cached: true
       stdout: |
-        Change Dir: '/home/ali/workspace/GoodbyeDPI-Turkey-Linux/goodbyedpi-linux/build/CMakeFiles/CMakeScratch/TryCompile-1jmiKX'
+        Change Dir: '/home/ali/workspace/GoodbyeDPI-Turkey-Linux/goodbyedpi-linux/build/CMakeFiles/CMakeScratch/TryCompile-chYKKm'
         
-        Run Build Command(s): /usr/bin/cmake -E env VERBOSE=1 /usr/bin/make -f Makefile cmTC_54191/fast
-        /usr/bin/make  -f CMakeFiles/cmTC_54191.dir/build.make CMakeFiles/cmTC_54191.dir/build
-        make[1]: Entering directory '/home/ali/workspace/GoodbyeDPI-Turkey-Linux/goodbyedpi-linux/build/CMakeFiles/CMakeScratch/TryCompile-1jmiKX'
-        Building C object CMakeFiles/cmTC_54191.dir/CMakeCCompilerABI.c.o
-        /usr/bin/cc   -v -o CMakeFiles/cmTC_54191.dir/CMakeCCompilerABI.c.o -c /usr/share/cmake/Modules/CMakeCCompilerABI.c
+        Run Build Command(s): /usr/bin/cmake -E env VERBOSE=1 /usr/bin/make -f Makefile cmTC_6ee17/fast
+        /usr/bin/make  -f CMakeFiles/cmTC_6ee17.dir/build.make CMakeFiles/cmTC_6ee17.dir/build
+        make[1]: Entering directory '/home/ali/workspace/GoodbyeDPI-Turkey-Linux/goodbyedpi-linux/build/CMakeFiles/CMakeScratch/TryCompile-chYKKm'
+        Building C object CMakeFiles/cmTC_6ee17.dir/CMakeCCompilerABI.c.o
+        /usr/bin/cc   -march=x86-64 -mtune=generic -O2 -fno-plt -fexceptions         -Wp,-D_FORTIFY_SOURCE=3 -Wformat         -fstack-clash-protection -fcf-protection         -fno-omit-frame-pointer -mno-omit-leaf-frame-pointer -g -ffile-prefix-map=/home/ali/workspace/GoodbyeDPI-Turkey-Linux/goodbyedpi-linux/src=/usr/src/debug/goodbyedpi-linux -flto=auto    -v -o CMakeFiles/cmTC_6ee17.dir/CMakeCCompilerABI.c.o -c /usr/share/cmake/Modules/CMakeCCompilerABI.c
         Using built-in specs.
         COLLECT_GCC=/usr/bin/cc
         Target: x86_64-pc-linux-gnu
@@ -1088,8 +1088,8 @@ events:
         Thread model: posix
         Supported LTO compression algorithms: zlib zstd
         gcc version 15.2.1 20260103 (GCC) 
-        COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_54191.dir/CMakeCCompilerABI.c.o' '-c' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_54191.dir/'
-         /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/cc1 -quiet -v /usr/share/cmake/Modules/CMakeCCompilerABI.c -quiet -dumpdir CMakeFiles/cmTC_54191.dir/ -dumpbase CMakeCCompilerABI.c.c -dumpbase-ext .c -mtune=generic -march=x86-64 -version -o /tmp/ccPZY8WS.s
+        COLLECT_GCC_OPTIONS='-march=x86-64' '-mtune=generic' '-O2' '-fno-plt' '-fexceptions' '-Wformat=1' '-fstack-clash-protection' '-fcf-protection=full' '-fno-omit-frame-pointer' '-mno-omit-leaf-frame-pointer' '-g' '-ffile-prefix-map=/home/ali/workspace/GoodbyeDPI-Turkey-Linux/goodbyedpi-linux/src=/usr/src/debug/goodbyedpi-linux' '-flto=auto' '-v' '-o' 'CMakeFiles/cmTC_6ee17.dir/CMakeCCompilerABI.c.o' '-c' '-dumpdir' 'CMakeFiles/cmTC_6ee17.dir/'
+         /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/cc1 -quiet -v -D_FORTIFY_SOURCE=3 /usr/share/cmake/Modules/CMakeCCompilerABI.c -quiet -dumpdir CMakeFiles/cmTC_6ee17.dir/ -dumpbase CMakeCCompilerABI.c.c -dumpbase-ext .c -march=x86-64 -mtune=generic -mno-omit-leaf-frame-pointer -g -O2 -Wformat=1 -version -fno-plt -fexceptions -fstack-clash-protection -fcf-protection=full -fno-omit-frame-pointer -ffile-prefix-map=/home/ali/workspace/GoodbyeDPI-Turkey-Linux/goodbyedpi-linux/src=/usr/src/debug/goodbyedpi-linux -flto=auto -o /tmp/ccZtuAHJ.s
         GNU C23 (GCC) version 15.2.1 20260103 (x86_64-pc-linux-gnu)
         	compiled by GNU C version 15.2.1 20260103, GMP version 6.3.0, MPFR version 4.2.2, MPC version 1.3.1, isl version isl-0.27-GMP
         
@@ -1103,14 +1103,14 @@ events:
          /usr/include
         End of search list.
         Compiler executable checksum: 2aa0ead74273ed721e313ee5d9153840
-        COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_54191.dir/CMakeCCompilerABI.c.o' '-c' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_54191.dir/'
-         as -v --64 -o CMakeFiles/cmTC_54191.dir/CMakeCCompilerABI.c.o /tmp/ccPZY8WS.s
+        COLLECT_GCC_OPTIONS='-march=x86-64' '-mtune=generic' '-O2' '-fno-plt' '-fexceptions' '-Wformat=1' '-fstack-clash-protection' '-fcf-protection=full' '-fno-omit-frame-pointer' '-mno-omit-leaf-frame-pointer' '-g' '-ffile-prefix-map=/home/ali/workspace/GoodbyeDPI-Turkey-Linux/goodbyedpi-linux/src=/usr/src/debug/goodbyedpi-linux' '-flto=auto' '-v' '-o' 'CMakeFiles/cmTC_6ee17.dir/CMakeCCompilerABI.c.o' '-c' '-dumpdir' 'CMakeFiles/cmTC_6ee17.dir/'
+         as -v --gdwarf-5 --64 -o CMakeFiles/cmTC_6ee17.dir/CMakeCCompilerABI.c.o /tmp/ccZtuAHJ.s
         GNU assembler version 2.45.1 (x86_64-pc-linux-gnu) using BFD version (GNU Binutils) 2.45.1
         COMPILER_PATH=/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/:/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/:/usr/lib/gcc/x86_64-pc-linux-gnu/:/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/:/usr/lib/gcc/x86_64-pc-linux-gnu/
         LIBRARY_PATH=/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/:/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/../../../../lib/:/lib/../lib/:/usr/lib/../lib/:/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/../../../:/lib/:/usr/lib/
-        COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_54191.dir/CMakeCCompilerABI.c.o' '-c' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_54191.dir/CMakeCCompilerABI.c.'
-        Linking C executable cmTC_54191
-        /usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_54191.dir/link.txt --verbose=1
+        COLLECT_GCC_OPTIONS='-march=x86-64' '-mtune=generic' '-O2' '-fno-plt' '-fexceptions' '-Wformat=1' '-fstack-clash-protection' '-fcf-protection=full' '-fno-omit-frame-pointer' '-mno-omit-leaf-frame-pointer' '-g' '-ffile-prefix-map=/home/ali/workspace/GoodbyeDPI-Turkey-Linux/goodbyedpi-linux/src=/usr/src/debug/goodbyedpi-linux' '-flto=auto' '-v' '-o' 'CMakeFiles/cmTC_6ee17.dir/CMakeCCompilerABI.c.o' '-c' '-dumpdir' 'CMakeFiles/cmTC_6ee17.dir/CMakeCCompilerABI.c.'
+        Linking C executable cmTC_6ee17
+        /usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_6ee17.dir/link.txt --verbose=1
         Using built-in specs.
         COLLECT_GCC=/usr/bin/cc
         COLLECT_LTO_WRAPPER=/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/lto-wrapper
@@ -1121,14 +1121,54 @@ events:
         gcc version 15.2.1 20260103 (GCC) 
         COMPILER_PATH=/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/:/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/:/usr/lib/gcc/x86_64-pc-linux-gnu/:/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/:/usr/lib/gcc/x86_64-pc-linux-gnu/
         LIBRARY_PATH=/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/:/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/../../../../lib/:/lib/../lib/:/usr/lib/../lib/:/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/../../../:/lib/:/usr/lib/
-        COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_54191' '-mtune=generic' '-march=x86-64' '-dumpdir' 'cmTC_54191.'
-         /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/collect2 -plugin /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/liblto_plugin.so -plugin-opt=/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/lto-wrapper -plugin-opt=-fresolution=/tmp/ccghqsB0.res -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s --build-id --eh-frame-hdr --hash-style=gnu -m elf_x86_64 -dynamic-linker /lib64/ld-linux-x86-64.so.2 -pie -o cmTC_54191 /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/../../../../lib/Scrt1.o /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/../../../../lib/crti.o /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/crtbeginS.o -L/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1 -L/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/../../../../lib -L/lib/../lib -L/usr/lib/../lib -L/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/../../.. -L/lib -L/usr/lib -v CMakeFiles/cmTC_54191.dir/CMakeCCompilerABI.c.o -lgcc --push-state --as-needed -lgcc_s --pop-state -lc -lgcc --push-state --as-needed -lgcc_s --pop-state /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/crtendS.o /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/../../../../lib/crtn.o
+        COLLECT_GCC_OPTIONS='-march=x86-64' '-mtune=generic' '-O2' '-fno-plt' '-fexceptions' '-Wformat=1' '-fstack-clash-protection' '-fcf-protection=full' '-fno-omit-frame-pointer' '-mno-omit-leaf-frame-pointer' '-g' '-ffile-prefix-map=/home/ali/workspace/GoodbyeDPI-Turkey-Linux/goodbyedpi-linux/src=/usr/src/debug/goodbyedpi-linux' '-flto=auto' '-flto=auto' '-v' '-o' 'cmTC_6ee17' '-dumpdir' 'cmTC_6ee17.'
+         /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/collect2 -plugin /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/liblto_plugin.so -plugin-opt=/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/lto-wrapper -plugin-opt=-fresolution=/tmp/cc4sqohr.res -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s -flto=auto -flto=auto --build-id --eh-frame-hdr --hash-style=gnu -m elf_x86_64 -dynamic-linker /lib64/ld-linux-x86-64.so.2 -pie -o cmTC_6ee17 /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/../../../../lib/Scrt1.o /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/../../../../lib/crti.o /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/crtbeginS.o -L/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1 -L/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/../../../../lib -L/lib/../lib -L/usr/lib/../lib -L/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/../../.. -L/lib -L/usr/lib -O1 --sort-common --as-needed -z relro -z now -z pack-relative-relocs -v CMakeFiles/cmTC_6ee17.dir/CMakeCCompilerABI.c.o -lgcc --push-state --as-needed -lgcc_s --pop-state -lc -lgcc --push-state --as-needed -lgcc_s --pop-state /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/crtendS.o /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/../../../../lib/crtn.o
         collect2 version 15.2.1 20260103
-        /usr/bin/ld -plugin /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/liblto_plugin.so -plugin-opt=/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/lto-wrapper -plugin-opt=-fresolution=/tmp/ccghqsB0.res -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s --build-id --eh-frame-hdr --hash-style=gnu -m elf_x86_64 -dynamic-linker /lib64/ld-linux-x86-64.so.2 -pie -o cmTC_54191 /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/../../../../lib/Scrt1.o /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/../../../../lib/crti.o /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/crtbeginS.o -L/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1 -L/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/../../../../lib -L/lib/../lib -L/usr/lib/../lib -L/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/../../.. -L/lib -L/usr/lib -v CMakeFiles/cmTC_54191.dir/CMakeCCompilerABI.c.o -lgcc --push-state --as-needed -lgcc_s --pop-state -lc -lgcc --push-state --as-needed -lgcc_s --pop-state /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/crtendS.o /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/../../../../lib/crtn.o
+        /usr/bin/ld -plugin /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/liblto_plugin.so -plugin-opt=/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/lto-wrapper -plugin-opt=-fresolution=/tmp/cc4sqohr.res -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s --build-id --eh-frame-hdr --hash-style=gnu -m elf_x86_64 -dynamic-linker /lib64/ld-linux-x86-64.so.2 -pie -o cmTC_6ee17 /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/../../../../lib/Scrt1.o /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/../../../../lib/crti.o /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/crtbeginS.o -L/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1 -L/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/../../../../lib -L/lib/../lib -L/usr/lib/../lib -L/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/../../.. -L/lib -L/usr/lib -O1 --sort-common --as-needed -z relro -z now -z pack-relative-relocs -v CMakeFiles/cmTC_6ee17.dir/CMakeCCompilerABI.c.o -lgcc --push-state --as-needed -lgcc_s --pop-state -lc -lgcc --push-state --as-needed -lgcc_s --pop-state /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/crtendS.o /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/../../../../lib/crtn.o
+        /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/lto-wrapper -fresolution=/tmp/cc4sqohr.res -flinker-output=pie CMakeFiles/cmTC_6ee17.dir/CMakeCCompilerABI.c.o 
+        /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/lto-wrapper -fresolution=/tmp/cc4sqohr.res -flinker-output=pie CMakeFiles/cmTC_6ee17.dir/CMakeCCompilerABI.c.o 
+        LTO parallelism level set to 8
+        /usr/bin/cc @/tmp/cc26iV1R
+        Using built-in specs.
+        COLLECT_GCC=/usr/bin/cc
+        Target: x86_64-pc-linux-gnu
+        Configured with: /build/gcc/src/gcc/configure --enable-languages=ada,c,c++,d,fortran,go,lto,m2,objc,obj-c++,rust,cobol --enable-bootstrap --prefix=/usr --libdir=/usr/lib --libexecdir=/usr/lib --mandir=/usr/share/man --infodir=/usr/share/info --with-bugurl=https://gitlab.archlinux.org/archlinux/packaging/packages/gcc/-/issues --with-build-config=bootstrap-lto --with-linker-hash-style=gnu --with-system-zlib --enable-__cxa_atexit --enable-cet=auto --enable-checking=release --enable-clocale=gnu --enable-default-pie --enable-default-ssp --enable-gnu-indirect-function --enable-gnu-unique-object --enable-libstdcxx-backtrace --enable-link-serialization=1 --enable-linker-build-id --enable-lto --enable-multilib --enable-plugin --enable-shared --enable-threads=posix --disable-libssp --disable-libstdcxx-pch --disable-werror
+        Thread model: posix
+        Supported LTO compression algorithms: zlib zstd
+        gcc version 15.2.1 20260103 (GCC) 
+        COLLECT_GCC_OPTIONS='-c' '-fno-openmp' '-fno-openacc' '-fPIE' '-g' '-O2' '-fcf-protection=full' '-march=x86-64' '-mtune=generic' '-O2' '-fno-plt' '-fexceptions' '-fstack-clash-protection' '-fcf-protection=full' '-fno-omit-frame-pointer' '-mno-omit-leaf-frame-pointer' '-g' '-ffile-prefix-map=/home/ali/workspace/GoodbyeDPI-Turkey-Linux/goodbyedpi-linux/src=/usr/src/debug/goodbyedpi-linux' '-v'   '-fltrans-output-list=/tmp/ccKH6zCC.ltrans.out' '-fwpa=8' '-fresolution=/tmp/cc4sqohr.res' '-flinker-output=pie'
+         /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/lto1 -quiet -dumpbase ./cmTC_6ee17.wpa -march=x86-64 -mtune=generic -mno-omit-leaf-frame-pointer -g -g -O2 -O2 -version -fno-openmp -fno-openacc -fPIE -fcf-protection=full -fno-plt -fexceptions -fstack-clash-protection -fcf-protection=full -fno-omit-frame-pointer -ffile-prefix-map=/home/ali/workspace/GoodbyeDPI-Turkey-Linux/goodbyedpi-linux/src=/usr/src/debug/goodbyedpi-linux -fltrans-output-list=/tmp/ccKH6zCC.ltrans.out -fwpa=8 -fresolution=/tmp/cc4sqohr.res -flinker-output=pie @/tmp/cc62lnZN
+        GNU GIMPLE (GCC) version 15.2.1 20260103 (x86_64-pc-linux-gnu)
+        	compiled by GNU C version 15.2.1 20260103, GMP version 6.3.0, MPFR version 4.2.2, MPC version 1.3.1, isl version isl-0.27-GMP
+        
+        GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
+        COMPILER_PATH=/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/:/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/:/usr/lib/gcc/x86_64-pc-linux-gnu/:/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/:/usr/lib/gcc/x86_64-pc-linux-gnu/:/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/:/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/:/usr/lib/gcc/x86_64-pc-linux-gnu/:/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/:/usr/lib/gcc/x86_64-pc-linux-gnu/
+        LIBRARY_PATH=/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/../../../../lib/../lib/:/lib/../lib/../lib/:/usr/lib/../lib/../lib/:/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/../../../../lib/:/lib/../lib/:/usr/lib/../lib/:/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/:/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/../../../../lib/:/lib/../lib/:/usr/lib/../lib/:/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/:/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/../../../../lib/:/lib/../lib/:/usr/lib/../lib/:/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/../../../:/lib/:/usr/lib/:/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/../../../:/lib/:/usr/lib/
+        COLLECT_GCC_OPTIONS='-c' '-fno-openmp' '-fno-openacc' '-fPIE' '-g' '-O2' '-fcf-protection=full' '-march=x86-64' '-mtune=generic' '-O2' '-fno-plt' '-fexceptions' '-fstack-clash-protection' '-fcf-protection=full' '-fno-omit-frame-pointer' '-mno-omit-leaf-frame-pointer' '-g' '-ffile-prefix-map=/home/ali/workspace/GoodbyeDPI-Turkey-Linux/goodbyedpi-linux/src=/usr/src/debug/goodbyedpi-linux' '-v'   '-fltrans-output-list=/tmp/ccKH6zCC.ltrans.out' '-fwpa=8' '-fresolution=/tmp/cc4sqohr.res' '-flinker-output=pie' '-dumpdir' './cmTC_6ee17.wpa.'
+        make -f /tmp/cc5pxDo9.mk -j8 all
+        Using built-in specs.
+        COLLECT_GCC=/usr/bin/cc
+        Target: x86_64-pc-linux-gnu
+        Configured with: /build/gcc/src/gcc/configure --enable-languages=ada,c,c++,d,fortran,go,lto,m2,objc,obj-c++,rust,cobol --enable-bootstrap --prefix=/usr --libdir=/usr/lib --libexecdir=/usr/lib --mandir=/usr/share/man --infodir=/usr/share/info --with-bugurl=https://gitlab.archlinux.org/archlinux/packaging/packages/gcc/-/issues --with-build-config=bootstrap-lto --with-linker-hash-style=gnu --with-system-zlib --enable-__cxa_atexit --enable-cet=auto --enable-checking=release --enable-clocale=gnu --enable-default-pie --enable-default-ssp --enable-gnu-indirect-function --enable-gnu-unique-object --enable-libstdcxx-backtrace --enable-link-serialization=1 --enable-linker-build-id --enable-lto --enable-multilib --enable-plugin --enable-shared --enable-threads=posix --disable-libssp --disable-libstdcxx-pch --disable-werror
+        Thread model: posix
+        Supported LTO compression algorithms: zlib zstd
+        gcc version 15.2.1 20260103 (GCC) 
+        COLLECT_GCC_OPTIONS='-c' '-fno-openmp' '-fno-openacc' '-fPIE' '-g' '-O2' '-fcf-protection=full' '-march=x86-64' '-mtune=generic' '-O2' '-fno-plt' '-fexceptions' '-fstack-clash-protection' '-fcf-protection=full' '-fno-omit-frame-pointer' '-mno-omit-leaf-frame-pointer' '-g' '-ffile-prefix-map=/home/ali/workspace/GoodbyeDPI-Turkey-Linux/goodbyedpi-linux/src=/usr/src/debug/goodbyedpi-linux' '-v'   '-fltrans' '-o' '/tmp/ccKH6zCC.ltrans0.ltrans.o'
+         /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/lto1 -quiet -dumpbase ./cmTC_6ee17.ltrans0.ltrans -march=x86-64 -mtune=generic -mno-omit-leaf-frame-pointer -g -g -O2 -O2 -version -fno-openmp -fno-openacc -fPIE -fcf-protection=full -fno-plt -fexceptions -fstack-clash-protection -fcf-protection=full -fno-omit-frame-pointer -ffile-prefix-map=/home/ali/workspace/GoodbyeDPI-Turkey-Linux/goodbyedpi-linux/src=/usr/src/debug/goodbyedpi-linux -fltrans /tmp/ccKH6zCC.ltrans0.o -o /tmp/cclcGJdb.s
+        GNU GIMPLE (GCC) version 15.2.1 20260103 (x86_64-pc-linux-gnu)
+        	compiled by GNU C version 15.2.1 20260103, GMP version 6.3.0, MPFR version 4.2.2, MPC version 1.3.1, isl version isl-0.27-GMP
+        
+        GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
+        COLLECT_GCC_OPTIONS='-c' '-fno-openmp' '-fno-openacc' '-fPIE' '-g' '-O2' '-fcf-protection=full' '-march=x86-64' '-mtune=generic' '-O2' '-fno-plt' '-fexceptions' '-fstack-clash-protection' '-fcf-protection=full' '-fno-omit-frame-pointer' '-mno-omit-leaf-frame-pointer' '-g' '-ffile-prefix-map=/home/ali/workspace/GoodbyeDPI-Turkey-Linux/goodbyedpi-linux/src=/usr/src/debug/goodbyedpi-linux' '-v'   '-fltrans' '-o' '/tmp/ccKH6zCC.ltrans0.ltrans.o'
+         as -v --gdwarf-5 --64 -o /tmp/ccKH6zCC.ltrans0.ltrans.o /tmp/cclcGJdb.s
+        GNU assembler version 2.45.1 (x86_64-pc-linux-gnu) using BFD version (GNU Binutils) 2.45.1
+        COMPILER_PATH=/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/:/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/:/usr/lib/gcc/x86_64-pc-linux-gnu/:/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/:/usr/lib/gcc/x86_64-pc-linux-gnu/:/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/:/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/:/usr/lib/gcc/x86_64-pc-linux-gnu/:/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/:/usr/lib/gcc/x86_64-pc-linux-gnu/
+        LIBRARY_PATH=/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/../../../../lib/../lib/:/lib/../lib/../lib/:/usr/lib/../lib/../lib/:/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/../../../../lib/:/lib/../lib/:/usr/lib/../lib/:/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/:/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/../../../../lib/:/lib/../lib/:/usr/lib/../lib/:/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/:/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/../../../../lib/:/lib/../lib/:/usr/lib/../lib/:/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/../../../:/lib/:/usr/lib/:/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/../../../:/lib/:/usr/lib/
+        COLLECT_GCC_OPTIONS='-c' '-fno-openmp' '-fno-openacc' '-fPIE' '-g' '-O2' '-fcf-protection=full' '-march=x86-64' '-mtune=generic' '-O2' '-fno-plt' '-fexceptions' '-fstack-clash-protection' '-fcf-protection=full' '-fno-omit-frame-pointer' '-mno-omit-leaf-frame-pointer' '-g' '-ffile-prefix-map=/home/ali/workspace/GoodbyeDPI-Turkey-Linux/goodbyedpi-linux/src=/usr/src/debug/goodbyedpi-linux' '-v'   '-fltrans' '-o' '/tmp/ccKH6zCC.ltrans0.ltrans.o' '-dumpdir' './cmTC_6ee17.ltrans0.ltrans.'
         GNU ld (GNU Binutils) 2.45.1
-        COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_54191' '-mtune=generic' '-march=x86-64' '-dumpdir' 'cmTC_54191.'
-        /usr/bin/cc  -v -Wl,-v CMakeFiles/cmTC_54191.dir/CMakeCCompilerABI.c.o -o cmTC_54191
-        make[1]: Leaving directory '/home/ali/workspace/GoodbyeDPI-Turkey-Linux/goodbyedpi-linux/build/CMakeFiles/CMakeScratch/TryCompile-1jmiKX'
+        COLLECT_GCC_OPTIONS='-march=x86-64' '-mtune=generic' '-O2' '-fno-plt' '-fexceptions' '-Wformat=1' '-fstack-clash-protection' '-fcf-protection=full' '-fno-omit-frame-pointer' '-mno-omit-leaf-frame-pointer' '-g' '-ffile-prefix-map=/home/ali/workspace/GoodbyeDPI-Turkey-Linux/goodbyedpi-linux/src=/usr/src/debug/goodbyedpi-linux' '-flto=auto' '-flto=auto' '-v' '-o' 'cmTC_6ee17' '-dumpdir' 'cmTC_6ee17.'
+        /usr/bin/cc -march=x86-64 -mtune=generic -O2 -fno-plt -fexceptions         -Wp,-D_FORTIFY_SOURCE=3 -Wformat         -fstack-clash-protection -fcf-protection         -fno-omit-frame-pointer -mno-omit-leaf-frame-pointer -g -ffile-prefix-map=/home/ali/workspace/GoodbyeDPI-Turkey-Linux/goodbyedpi-linux/src=/usr/src/debug/goodbyedpi-linux -flto=auto  -Wl,-O1 -Wl,--sort-common -Wl,--as-needed -Wl,-z,relro -Wl,-z,now          -Wl,-z,pack-relative-relocs -flto=auto -v -Wl,-v CMakeFiles/cmTC_6ee17.dir/CMakeCCompilerABI.c.o -o cmTC_6ee17
+        make[1]: Leaving directory '/home/ali/workspace/GoodbyeDPI-Turkey-Linux/goodbyedpi-linux/build/CMakeFiles/CMakeScratch/TryCompile-chYKKm'
         
       exitCode: 0
   -
@@ -1163,13 +1203,13 @@ events:
       Parsed C implicit link information:
         link line regex: [^( *|.*[/\\])(ld[0-9]*(|\\.[a-rt-z][a-z]*|\\.s[a-np-z][a-z]*|\\.so[a-z]+)|CMAKE_LINK_STARTFILE-NOTFOUND|([^/\\]+-)?ld|collect2)[^/\\]*( |$)]
         linker tool regex: [^[ 	]*(->|"|[0-9]+>[ 	-]*Build:[ 	0-9]+ ms[ 	]*)?[ 	]*(([^"]*[/\\])?(ld[0-9]*(|\\.[a-rt-z][a-z]*|\\.s[a-np-z][a-z]*|\\.so[a-z]+)))("|,| |$)]
-        ignore line: [Change Dir: '/home/ali/workspace/GoodbyeDPI-Turkey-Linux/goodbyedpi-linux/build/CMakeFiles/CMakeScratch/TryCompile-1jmiKX']
+        ignore line: [Change Dir: '/home/ali/workspace/GoodbyeDPI-Turkey-Linux/goodbyedpi-linux/build/CMakeFiles/CMakeScratch/TryCompile-chYKKm']
         ignore line: []
-        ignore line: [Run Build Command(s): /usr/bin/cmake -E env VERBOSE=1 /usr/bin/make -f Makefile cmTC_54191/fast]
-        ignore line: [/usr/bin/make  -f CMakeFiles/cmTC_54191.dir/build.make CMakeFiles/cmTC_54191.dir/build]
-        ignore line: [make[1]: Entering directory '/home/ali/workspace/GoodbyeDPI-Turkey-Linux/goodbyedpi-linux/build/CMakeFiles/CMakeScratch/TryCompile-1jmiKX']
-        ignore line: [Building C object CMakeFiles/cmTC_54191.dir/CMakeCCompilerABI.c.o]
-        ignore line: [/usr/bin/cc   -v -o CMakeFiles/cmTC_54191.dir/CMakeCCompilerABI.c.o -c /usr/share/cmake/Modules/CMakeCCompilerABI.c]
+        ignore line: [Run Build Command(s): /usr/bin/cmake -E env VERBOSE=1 /usr/bin/make -f Makefile cmTC_6ee17/fast]
+        ignore line: [/usr/bin/make  -f CMakeFiles/cmTC_6ee17.dir/build.make CMakeFiles/cmTC_6ee17.dir/build]
+        ignore line: [make[1]: Entering directory '/home/ali/workspace/GoodbyeDPI-Turkey-Linux/goodbyedpi-linux/build/CMakeFiles/CMakeScratch/TryCompile-chYKKm']
+        ignore line: [Building C object CMakeFiles/cmTC_6ee17.dir/CMakeCCompilerABI.c.o]
+        ignore line: [/usr/bin/cc   -march=x86-64 -mtune=generic -O2 -fno-plt -fexceptions         -Wp -D_FORTIFY_SOURCE=3 -Wformat         -fstack-clash-protection -fcf-protection         -fno-omit-frame-pointer -mno-omit-leaf-frame-pointer -g -ffile-prefix-map=/home/ali/workspace/GoodbyeDPI-Turkey-Linux/goodbyedpi-linux/src=/usr/src/debug/goodbyedpi-linux -flto=auto    -v -o CMakeFiles/cmTC_6ee17.dir/CMakeCCompilerABI.c.o -c /usr/share/cmake/Modules/CMakeCCompilerABI.c]
         ignore line: [Using built-in specs.]
         ignore line: [COLLECT_GCC=/usr/bin/cc]
         ignore line: [Target: x86_64-pc-linux-gnu]
@@ -1177,8 +1217,8 @@ events:
         ignore line: [Thread model: posix]
         ignore line: [Supported LTO compression algorithms: zlib zstd]
         ignore line: [gcc version 15.2.1 20260103 (GCC) ]
-        ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_54191.dir/CMakeCCompilerABI.c.o' '-c' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_54191.dir/']
-        ignore line: [ /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/cc1 -quiet -v /usr/share/cmake/Modules/CMakeCCompilerABI.c -quiet -dumpdir CMakeFiles/cmTC_54191.dir/ -dumpbase CMakeCCompilerABI.c.c -dumpbase-ext .c -mtune=generic -march=x86-64 -version -o /tmp/ccPZY8WS.s]
+        ignore line: [COLLECT_GCC_OPTIONS='-march=x86-64' '-mtune=generic' '-O2' '-fno-plt' '-fexceptions' '-Wformat=1' '-fstack-clash-protection' '-fcf-protection=full' '-fno-omit-frame-pointer' '-mno-omit-leaf-frame-pointer' '-g' '-ffile-prefix-map=/home/ali/workspace/GoodbyeDPI-Turkey-Linux/goodbyedpi-linux/src=/usr/src/debug/goodbyedpi-linux' '-flto=auto' '-v' '-o' 'CMakeFiles/cmTC_6ee17.dir/CMakeCCompilerABI.c.o' '-c' '-dumpdir' 'CMakeFiles/cmTC_6ee17.dir/']
+        ignore line: [ /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/cc1 -quiet -v -D_FORTIFY_SOURCE=3 /usr/share/cmake/Modules/CMakeCCompilerABI.c -quiet -dumpdir CMakeFiles/cmTC_6ee17.dir/ -dumpbase CMakeCCompilerABI.c.c -dumpbase-ext .c -march=x86-64 -mtune=generic -mno-omit-leaf-frame-pointer -g -O2 -Wformat=1 -version -fno-plt -fexceptions -fstack-clash-protection -fcf-protection=full -fno-omit-frame-pointer -ffile-prefix-map=/home/ali/workspace/GoodbyeDPI-Turkey-Linux/goodbyedpi-linux/src=/usr/src/debug/goodbyedpi-linux -flto=auto -o /tmp/ccZtuAHJ.s]
         ignore line: [GNU C23 (GCC) version 15.2.1 20260103 (x86_64-pc-linux-gnu)]
         ignore line: [	compiled by GNU C version 15.2.1 20260103  GMP version 6.3.0  MPFR version 4.2.2  MPC version 1.3.1  isl version isl-0.27-GMP]
         ignore line: []
@@ -1192,14 +1232,14 @@ events:
         ignore line: [ /usr/include]
         ignore line: [End of search list.]
         ignore line: [Compiler executable checksum: 2aa0ead74273ed721e313ee5d9153840]
-        ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_54191.dir/CMakeCCompilerABI.c.o' '-c' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_54191.dir/']
-        ignore line: [ as -v --64 -o CMakeFiles/cmTC_54191.dir/CMakeCCompilerABI.c.o /tmp/ccPZY8WS.s]
+        ignore line: [COLLECT_GCC_OPTIONS='-march=x86-64' '-mtune=generic' '-O2' '-fno-plt' '-fexceptions' '-Wformat=1' '-fstack-clash-protection' '-fcf-protection=full' '-fno-omit-frame-pointer' '-mno-omit-leaf-frame-pointer' '-g' '-ffile-prefix-map=/home/ali/workspace/GoodbyeDPI-Turkey-Linux/goodbyedpi-linux/src=/usr/src/debug/goodbyedpi-linux' '-flto=auto' '-v' '-o' 'CMakeFiles/cmTC_6ee17.dir/CMakeCCompilerABI.c.o' '-c' '-dumpdir' 'CMakeFiles/cmTC_6ee17.dir/']
+        ignore line: [ as -v --gdwarf-5 --64 -o CMakeFiles/cmTC_6ee17.dir/CMakeCCompilerABI.c.o /tmp/ccZtuAHJ.s]
         ignore line: [GNU assembler version 2.45.1 (x86_64-pc-linux-gnu) using BFD version (GNU Binutils) 2.45.1]
         ignore line: [COMPILER_PATH=/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/:/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/:/usr/lib/gcc/x86_64-pc-linux-gnu/:/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/:/usr/lib/gcc/x86_64-pc-linux-gnu/]
         ignore line: [LIBRARY_PATH=/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/:/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/../../../../lib/:/lib/../lib/:/usr/lib/../lib/:/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/../../../:/lib/:/usr/lib/]
-        ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_54191.dir/CMakeCCompilerABI.c.o' '-c' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_54191.dir/CMakeCCompilerABI.c.']
-        ignore line: [Linking C executable cmTC_54191]
-        ignore line: [/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_54191.dir/link.txt --verbose=1]
+        ignore line: [COLLECT_GCC_OPTIONS='-march=x86-64' '-mtune=generic' '-O2' '-fno-plt' '-fexceptions' '-Wformat=1' '-fstack-clash-protection' '-fcf-protection=full' '-fno-omit-frame-pointer' '-mno-omit-leaf-frame-pointer' '-g' '-ffile-prefix-map=/home/ali/workspace/GoodbyeDPI-Turkey-Linux/goodbyedpi-linux/src=/usr/src/debug/goodbyedpi-linux' '-flto=auto' '-v' '-o' 'CMakeFiles/cmTC_6ee17.dir/CMakeCCompilerABI.c.o' '-c' '-dumpdir' 'CMakeFiles/cmTC_6ee17.dir/CMakeCCompilerABI.c.']
+        ignore line: [Linking C executable cmTC_6ee17]
+        ignore line: [/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_6ee17.dir/link.txt --verbose=1]
         ignore line: [Using built-in specs.]
         ignore line: [COLLECT_GCC=/usr/bin/cc]
         ignore line: [COLLECT_LTO_WRAPPER=/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/lto-wrapper]
@@ -1210,18 +1250,20 @@ events:
         ignore line: [gcc version 15.2.1 20260103 (GCC) ]
         ignore line: [COMPILER_PATH=/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/:/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/:/usr/lib/gcc/x86_64-pc-linux-gnu/:/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/:/usr/lib/gcc/x86_64-pc-linux-gnu/]
         ignore line: [LIBRARY_PATH=/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/:/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/../../../../lib/:/lib/../lib/:/usr/lib/../lib/:/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/../../../:/lib/:/usr/lib/]
-        ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_54191' '-mtune=generic' '-march=x86-64' '-dumpdir' 'cmTC_54191.']
-        link line: [ /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/collect2 -plugin /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/liblto_plugin.so -plugin-opt=/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/lto-wrapper -plugin-opt=-fresolution=/tmp/ccghqsB0.res -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s --build-id --eh-frame-hdr --hash-style=gnu -m elf_x86_64 -dynamic-linker /lib64/ld-linux-x86-64.so.2 -pie -o cmTC_54191 /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/../../../../lib/Scrt1.o /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/../../../../lib/crti.o /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/crtbeginS.o -L/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1 -L/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/../../../../lib -L/lib/../lib -L/usr/lib/../lib -L/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/../../.. -L/lib -L/usr/lib -v CMakeFiles/cmTC_54191.dir/CMakeCCompilerABI.c.o -lgcc --push-state --as-needed -lgcc_s --pop-state -lc -lgcc --push-state --as-needed -lgcc_s --pop-state /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/crtendS.o /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/../../../../lib/crtn.o]
+        ignore line: [COLLECT_GCC_OPTIONS='-march=x86-64' '-mtune=generic' '-O2' '-fno-plt' '-fexceptions' '-Wformat=1' '-fstack-clash-protection' '-fcf-protection=full' '-fno-omit-frame-pointer' '-mno-omit-leaf-frame-pointer' '-g' '-ffile-prefix-map=/home/ali/workspace/GoodbyeDPI-Turkey-Linux/goodbyedpi-linux/src=/usr/src/debug/goodbyedpi-linux' '-flto=auto' '-flto=auto' '-v' '-o' 'cmTC_6ee17' '-dumpdir' 'cmTC_6ee17.']
+        link line: [ /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/collect2 -plugin /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/liblto_plugin.so -plugin-opt=/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/lto-wrapper -plugin-opt=-fresolution=/tmp/cc4sqohr.res -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s -flto=auto -flto=auto --build-id --eh-frame-hdr --hash-style=gnu -m elf_x86_64 -dynamic-linker /lib64/ld-linux-x86-64.so.2 -pie -o cmTC_6ee17 /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/../../../../lib/Scrt1.o /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/../../../../lib/crti.o /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/crtbeginS.o -L/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1 -L/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/../../../../lib -L/lib/../lib -L/usr/lib/../lib -L/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/../../.. -L/lib -L/usr/lib -O1 --sort-common --as-needed -z relro -z now -z pack-relative-relocs -v CMakeFiles/cmTC_6ee17.dir/CMakeCCompilerABI.c.o -lgcc --push-state --as-needed -lgcc_s --pop-state -lc -lgcc --push-state --as-needed -lgcc_s --pop-state /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/crtendS.o /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/../../../../lib/crtn.o]
           arg [/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/collect2] ==> ignore
           arg [-plugin] ==> ignore
           arg [/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/liblto_plugin.so] ==> ignore
           arg [-plugin-opt=/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/lto-wrapper] ==> ignore
-          arg [-plugin-opt=-fresolution=/tmp/ccghqsB0.res] ==> ignore
+          arg [-plugin-opt=-fresolution=/tmp/cc4sqohr.res] ==> ignore
           arg [-plugin-opt=-pass-through=-lgcc] ==> ignore
           arg [-plugin-opt=-pass-through=-lgcc_s] ==> ignore
           arg [-plugin-opt=-pass-through=-lc] ==> ignore
           arg [-plugin-opt=-pass-through=-lgcc] ==> ignore
           arg [-plugin-opt=-pass-through=-lgcc_s] ==> ignore
+          arg [-flto=auto] ==> ignore
+          arg [-flto=auto] ==> ignore
           arg [--build-id] ==> ignore
           arg [--eh-frame-hdr] ==> ignore
           arg [--hash-style=gnu] ==> ignore
@@ -1231,7 +1273,7 @@ events:
           arg [/lib64/ld-linux-x86-64.so.2] ==> ignore
           arg [-pie] ==> ignore
           arg [-o] ==> ignore
-          arg [cmTC_54191] ==> ignore
+          arg [cmTC_6ee17] ==> ignore
           arg [/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/../../../../lib/Scrt1.o] ==> obj [/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/../../../../lib/Scrt1.o]
           arg [/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/../../../../lib/crti.o] ==> obj [/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/../../../../lib/crti.o]
           arg [/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/crtbeginS.o] ==> obj [/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/crtbeginS.o]
@@ -1242,8 +1284,14 @@ events:
           arg [-L/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/../../..] ==> dir [/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/../../..]
           arg [-L/lib] ==> dir [/lib]
           arg [-L/usr/lib] ==> dir [/usr/lib]
+          arg [-O1] ==> ignore
+          arg [--sort-common] ==> ignore
+          arg [--as-needed] ==> ignore
+          arg [-zrelro] ==> ignore
+          arg [-znow] ==> ignore
+          arg [-zpack-relative-relocs] ==> ignore
           arg [-v] ==> ignore
-          arg [CMakeFiles/cmTC_54191.dir/CMakeCCompilerABI.c.o] ==> ignore
+          arg [CMakeFiles/cmTC_6ee17.dir/CMakeCCompilerABI.c.o] ==> ignore
           arg [-lgcc] ==> lib [gcc]
           arg [--push-state] ==> ignore
           arg [--as-needed] ==> ignore
@@ -1258,7 +1306,7 @@ events:
           arg [/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/crtendS.o] ==> obj [/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/crtendS.o]
           arg [/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/../../../../lib/crtn.o] ==> obj [/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/../../../../lib/crtn.o]
         ignore line: [collect2 version 15.2.1 20260103]
-        ignore line: [/usr/bin/ld -plugin /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/liblto_plugin.so -plugin-opt=/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/lto-wrapper -plugin-opt=-fresolution=/tmp/ccghqsB0.res -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s --build-id --eh-frame-hdr --hash-style=gnu -m elf_x86_64 -dynamic-linker /lib64/ld-linux-x86-64.so.2 -pie -o cmTC_54191 /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/../../../../lib/Scrt1.o /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/../../../../lib/crti.o /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/crtbeginS.o -L/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1 -L/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/../../../../lib -L/lib/../lib -L/usr/lib/../lib -L/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/../../.. -L/lib -L/usr/lib -v CMakeFiles/cmTC_54191.dir/CMakeCCompilerABI.c.o -lgcc --push-state --as-needed -lgcc_s --pop-state -lc -lgcc --push-state --as-needed -lgcc_s --pop-state /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/crtendS.o /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/../../../../lib/crtn.o]
+        ignore line: [/usr/bin/ld -plugin /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/liblto_plugin.so -plugin-opt=/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/lto-wrapper -plugin-opt=-fresolution=/tmp/cc4sqohr.res -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s --build-id --eh-frame-hdr --hash-style=gnu -m elf_x86_64 -dynamic-linker /lib64/ld-linux-x86-64.so.2 -pie -o cmTC_6ee17 /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/../../../../lib/Scrt1.o /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/../../../../lib/crti.o /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/crtbeginS.o -L/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1 -L/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/../../../../lib -L/lib/../lib -L/usr/lib/../lib -L/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/../../.. -L/lib -L/usr/lib -O1 --sort-common --as-needed -z relro -z now -z pack-relative-relocs -v CMakeFiles/cmTC_6ee17.dir/CMakeCCompilerABI.c.o -lgcc --push-state --as-needed -lgcc_s --pop-state -lc -lgcc --push-state --as-needed -lgcc_s --pop-state /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/crtendS.o /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/../../../../lib/crtn.o]
         linker tool for 'C': /usr/bin/ld
         collapse obj [/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/../../../../lib/Scrt1.o] ==> [/usr/lib/Scrt1.o]
         collapse obj [/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/../../../../lib/crti.o] ==> [/usr/lib/crti.o]
@@ -1306,8 +1354,8 @@ events:
       - "pkg-config"
       - "pkgconf"
     candidate_directories:
-      - "/home/ali/.local/bin/"
       - "/home/ali/.opencode/bin/"
+      - "/home/ali/.local/bin/"
       - "/home/ali/.local/lib/hyde/"
       - "/home/ali/.nix-profile/bin/"
       - "/nix/var/nix/profiles/default/bin/"
@@ -1336,10 +1384,10 @@ events:
       - "/opt/sbin/"
       - "/opt/"
     searched_directories:
-      - "/home/ali/.local/bin/pkg-config"
-      - "/home/ali/.local/bin/pkgconf"
       - "/home/ali/.opencode/bin/pkg-config"
       - "/home/ali/.opencode/bin/pkgconf"
+      - "/home/ali/.local/bin/pkg-config"
+      - "/home/ali/.local/bin/pkgconf"
       - "/home/ali/.local/lib/hyde/pkg-config"
       - "/home/ali/.local/lib/hyde/pkgconf"
       - "/home/ali/.nix-profile/bin/pkg-config"
@@ -1353,7 +1401,6 @@ events:
     found: "/usr/bin/pkg-config"
     search_context:
       ENV{PATH}:
-        - "/home/ali/.local/bin"
         - "/home/ali/.opencode/bin"
         - "/home/ali/.local/bin"
         - "/home/ali/.local/bin"
@@ -1370,13 +1417,13 @@ events:
         - "/usr/bin/site_perl"
         - "/usr/bin/vendor_perl"
         - "/usr/bin/core_perl"
-      CMAKE_INSTALL_PREFIX: "/usr/local"
+      CMAKE_INSTALL_PREFIX: "/usr"
       CMAKE_SYSTEM_PREFIX_PATH:
         - "/usr/local"
         - "/usr"
         - "/"
         - "/usr"
-        - "/usr/local"
+        - "/usr"
         - "/usr/X11R6"
         - "/usr/pkg"
         - "/opt"
@@ -1406,7 +1453,6 @@ events:
     found: "/usr/lib/libnetfilter_queue.so"
     search_context:
       ENV{PATH}:
-        - "/home/ali/.local/bin"
         - "/home/ali/.opencode/bin"
         - "/home/ali/.local/bin"
         - "/home/ali/.local/bin"
@@ -1423,13 +1469,13 @@ events:
         - "/usr/bin/site_perl"
         - "/usr/bin/vendor_perl"
         - "/usr/bin/core_perl"
-      CMAKE_INSTALL_PREFIX: "/usr/local"
+      CMAKE_INSTALL_PREFIX: "/usr"
       CMAKE_SYSTEM_PREFIX_PATH:
         - "/usr/local"
         - "/usr"
         - "/"
         - "/usr"
-        - "/usr/local"
+        - "/usr"
         - "/usr/X11R6"
         - "/usr/pkg"
         - "/opt"
@@ -1461,7 +1507,6 @@ events:
     found: "/usr/lib/libnfnetlink.so"
     search_context:
       ENV{PATH}:
-        - "/home/ali/.local/bin"
         - "/home/ali/.opencode/bin"
         - "/home/ali/.local/bin"
         - "/home/ali/.local/bin"
@@ -1478,13 +1523,13 @@ events:
         - "/usr/bin/site_perl"
         - "/usr/bin/vendor_perl"
         - "/usr/bin/core_perl"
-      CMAKE_INSTALL_PREFIX: "/usr/local"
+      CMAKE_INSTALL_PREFIX: "/usr"
       CMAKE_SYSTEM_PREFIX_PATH:
         - "/usr/local"
         - "/usr"
         - "/"
         - "/usr"
-        - "/usr/local"
+        - "/usr"
         - "/usr/X11R6"
         - "/usr/pkg"
         - "/opt"
@@ -1516,7 +1561,6 @@ events:
     found: "/usr/lib/libmnl.so"
     search_context:
       ENV{PATH}:
-        - "/home/ali/.local/bin"
         - "/home/ali/.opencode/bin"
         - "/home/ali/.local/bin"
         - "/home/ali/.local/bin"
@@ -1533,13 +1577,13 @@ events:
         - "/usr/bin/site_perl"
         - "/usr/bin/vendor_perl"
         - "/usr/bin/core_perl"
-      CMAKE_INSTALL_PREFIX: "/usr/local"
+      CMAKE_INSTALL_PREFIX: "/usr"
       CMAKE_SYSTEM_PREFIX_PATH:
         - "/usr/local"
         - "/usr"
         - "/"
         - "/usr"
-        - "/usr/local"
+        - "/usr"
         - "/usr/X11R6"
         - "/usr/pkg"
         - "/opt"
@@ -1571,7 +1615,6 @@ events:
     found: "/usr/lib/libsystemd.so"
     search_context:
       ENV{PATH}:
-        - "/home/ali/.local/bin"
         - "/home/ali/.opencode/bin"
         - "/home/ali/.local/bin"
         - "/home/ali/.local/bin"
@@ -1588,13 +1631,13 @@ events:
         - "/usr/bin/site_perl"
         - "/usr/bin/vendor_perl"
         - "/usr/bin/core_perl"
-      CMAKE_INSTALL_PREFIX: "/usr/local"
+      CMAKE_INSTALL_PREFIX: "/usr"
       CMAKE_SYSTEM_PREFIX_PATH:
         - "/usr/local"
         - "/usr"
         - "/"
         - "/usr"
-        - "/usr/local"
+        - "/usr"
         - "/usr/X11R6"
         - "/usr/pkg"
         - "/opt"
@@ -1611,27 +1654,29 @@ events:
     checks:
       - "Performing Test CMAKE_HAVE_LIBC_PTHREAD"
     directories:
-      source: "/home/ali/workspace/GoodbyeDPI-Turkey-Linux/goodbyedpi-linux/build/CMakeFiles/CMakeScratch/TryCompile-TzQ5lr"
-      binary: "/home/ali/workspace/GoodbyeDPI-Turkey-Linux/goodbyedpi-linux/build/CMakeFiles/CMakeScratch/TryCompile-TzQ5lr"
+      source: "/home/ali/workspace/GoodbyeDPI-Turkey-Linux/goodbyedpi-linux/build/CMakeFiles/CMakeScratch/TryCompile-92mlwn"
+      binary: "/home/ali/workspace/GoodbyeDPI-Turkey-Linux/goodbyedpi-linux/build/CMakeFiles/CMakeScratch/TryCompile-92mlwn"
     cmakeVariables:
-      CMAKE_C_FLAGS: " -Wall -Wextra -Wpedantic -O2 -D_FORTIFY_SOURCE=2 -fstack-protector-strong -fPIE -pie -Wformat -Wformat-security -Wl,-z,relro,-z,now"
+      CMAKE_C_FLAGS: "-march=x86-64 -mtune=generic -O2 -pipe -fno-plt -fexceptions         -Wp,-D_FORTIFY_SOURCE=3 -Wformat -Werror=format-security         -fstack-clash-protection -fcf-protection         -fno-omit-frame-pointer -mno-omit-leaf-frame-pointer -g -ffile-prefix-map=/home/ali/workspace/GoodbyeDPI-Turkey-Linux/goodbyedpi-linux/src=/usr/src/debug/goodbyedpi-linux -flto=auto -Wall -Wextra -Wpedantic -O2 -D_FORTIFY_SOURCE=2 -fstack-protector-strong -fPIE -pie -Wformat -Wformat-security -Wl,-z,relro,-z,now"
       CMAKE_C_FLAGS_DEBUG: "-g"
-      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_EXE_LINKER_FLAGS: "-Wl,-O1 -Wl,--sort-common -Wl,--as-needed -Wl,-z,relro -Wl,-z,now          -Wl,-z,pack-relative-relocs -flto=auto"
     buildResult:
       variable: "CMAKE_HAVE_LIBC_PTHREAD"
       cached: true
       stdout: |
-        Change Dir: '/home/ali/workspace/GoodbyeDPI-Turkey-Linux/goodbyedpi-linux/build/CMakeFiles/CMakeScratch/TryCompile-TzQ5lr'
+        Change Dir: '/home/ali/workspace/GoodbyeDPI-Turkey-Linux/goodbyedpi-linux/build/CMakeFiles/CMakeScratch/TryCompile-92mlwn'
         
-        Run Build Command(s): /usr/bin/cmake -E env VERBOSE=1 /usr/bin/make -f Makefile cmTC_ec18b/fast
-        /usr/bin/make  -f CMakeFiles/cmTC_ec18b.dir/build.make CMakeFiles/cmTC_ec18b.dir/build
-        make[1]: Entering directory '/home/ali/workspace/GoodbyeDPI-Turkey-Linux/goodbyedpi-linux/build/CMakeFiles/CMakeScratch/TryCompile-TzQ5lr'
-        Building C object CMakeFiles/cmTC_ec18b.dir/src.c.o
-        /usr/bin/cc -DCMAKE_HAVE_LIBC_PTHREAD  -Wall -Wextra -Wpedantic -O2 -D_FORTIFY_SOURCE=2 -fstack-protector-strong -fPIE -pie -Wformat -Wformat-security -Wl,-z,relro,-z,now  -std=gnu99 -o CMakeFiles/cmTC_ec18b.dir/src.c.o -c /home/ali/workspace/GoodbyeDPI-Turkey-Linux/goodbyedpi-linux/build/CMakeFiles/CMakeScratch/TryCompile-TzQ5lr/src.c
-        Linking C executable cmTC_ec18b
-        /usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_ec18b.dir/link.txt --verbose=1
-        /usr/bin/cc  -Wall -Wextra -Wpedantic -O2 -D_FORTIFY_SOURCE=2 -fstack-protector-strong -fPIE -pie -Wformat -Wformat-security -Wl,-z,relro,-z,now  CMakeFiles/cmTC_ec18b.dir/src.c.o -o cmTC_ec18b
-        make[1]: Leaving directory '/home/ali/workspace/GoodbyeDPI-Turkey-Linux/goodbyedpi-linux/build/CMakeFiles/CMakeScratch/TryCompile-TzQ5lr'
+        Run Build Command(s): /usr/bin/cmake -E env VERBOSE=1 /usr/bin/make -f Makefile cmTC_18e07/fast
+        /usr/bin/make  -f CMakeFiles/cmTC_18e07.dir/build.make CMakeFiles/cmTC_18e07.dir/build
+        make[1]: Entering directory '/home/ali/workspace/GoodbyeDPI-Turkey-Linux/goodbyedpi-linux/build/CMakeFiles/CMakeScratch/TryCompile-92mlwn'
+        Building C object CMakeFiles/cmTC_18e07.dir/src.c.o
+        /usr/bin/cc -DCMAKE_HAVE_LIBC_PTHREAD  -march=x86-64 -mtune=generic -O2 -pipe -fno-plt -fexceptions         -Wp,-D_FORTIFY_SOURCE=3 -Wformat -Werror=format-security         -fstack-clash-protection -fcf-protection         -fno-omit-frame-pointer -mno-omit-leaf-frame-pointer -g -ffile-prefix-map=/home/ali/workspace/GoodbyeDPI-Turkey-Linux/goodbyedpi-linux/src=/usr/src/debug/goodbyedpi-linux -flto=auto -Wall -Wextra -Wpedantic -O2 -D_FORTIFY_SOURCE=2 -fstack-protector-strong -fPIE -pie -Wformat -Wformat-security -Wl,-z,relro,-z,now  -std=gnu99 -o CMakeFiles/cmTC_18e07.dir/src.c.o -c /home/ali/workspace/GoodbyeDPI-Turkey-Linux/goodbyedpi-linux/build/CMakeFiles/CMakeScratch/TryCompile-92mlwn/src.c
+        <command-line>: warning: ‘_FORTIFY_SOURCE’ redefined
+        <command-line>: note: this is the location of the previous definition
+        Linking C executable cmTC_18e07
+        /usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_18e07.dir/link.txt --verbose=1
+        /usr/bin/cc -march=x86-64 -mtune=generic -O2 -pipe -fno-plt -fexceptions         -Wp,-D_FORTIFY_SOURCE=3 -Wformat -Werror=format-security         -fstack-clash-protection -fcf-protection         -fno-omit-frame-pointer -mno-omit-leaf-frame-pointer -g -ffile-prefix-map=/home/ali/workspace/GoodbyeDPI-Turkey-Linux/goodbyedpi-linux/src=/usr/src/debug/goodbyedpi-linux -flto=auto -Wall -Wextra -Wpedantic -O2 -D_FORTIFY_SOURCE=2 -fstack-protector-strong -fPIE -pie -Wformat -Wformat-security -Wl,-z,relro,-z,now  -Wl,-O1 -Wl,--sort-common -Wl,--as-needed -Wl,-z,relro -Wl,-z,now          -Wl,-z,pack-relative-relocs -flto=auto  CMakeFiles/cmTC_18e07.dir/src.c.o -o cmTC_18e07
+        make[1]: Leaving directory '/home/ali/workspace/GoodbyeDPI-Turkey-Linux/goodbyedpi-linux/build/CMakeFiles/CMakeScratch/TryCompile-92mlwn'
         
       exitCode: 0
 ...

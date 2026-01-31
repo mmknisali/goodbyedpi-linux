@@ -89,7 +89,8 @@ endif()
 set(UTILS_SOURCES
     src/utils/hash.c
     src/utils/string_utils.c
-    src/utils/net_utils.c
+    src/utils/net_utils.c 
+    src/capture/netfilter_capture.c
 )
 
 # All sources

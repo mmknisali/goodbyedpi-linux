@@ -1,29 +1,29 @@
-# PKGBUILD for GoodbyeDPI Linux
+# PKGBUILD for GoodbyeDPI Linux (Local Build)
 
 pkgname=goodbyedpi-linux
 pkgver=0.2.3rc3
 pkgrel=1
 pkgdesc="Linux DPI bypass and circumvention utility"
 arch=('x86_64')
-url="https://github.com/mmknisali/goodbyedpi-linux/archive/refs/tags/v$pkgver.tar.gz"
+url="https://github.com/mmknisali/goodbyedpi-linux"
 license=('Apache')
 depends=('libnetfilter_queue' 'libmnl' 'iptables-nft' 'systemd')
 makedepends=('cmake' 'make' 'gcc' 'pkg-config')
 optdepends=('net-tools: for network interface detection')
 backup=('etc/goodbyedpi/goodbyedpi.conf')
-# Use local source (current directory)
-source=(".")
-sha256sums=('SKIP')
+
+# We leave these empty because we are building from the local directory
+source=()
+sha256sums=()
 
 prepare() {
-    cd "$srcdir/$pkgname-$pkgver"
-
-    # Create build directory
+    # $startdir points to the directory containing this PKGBUILD
+    cd "$startdir"
     mkdir -p build
 }
 
 build() {
-    cd "$srcdir/$pkgname-$pkgver/build"
+    cd "$startdir/build"
 
     cmake .. \
         -DCMAKE_BUILD_TYPE=Release \
@@ -35,49 +35,52 @@ build() {
 }
 
 check() {
-    cd "$srcdir/$pkgname-$pkgver/build"
+    cd "$startdir/build"
 
-    # Run tests if enabled
-    if [[ -d tests ]]; then
+    if [[ -d ../tests ]]; then
         ctest --output-on-failure
     fi
 }
 
 package() {
-    cd "$srcdir/$pkgname-$pkgver/build"
+    cd "$startdir/build"
 
+    # Install main binary via Makefile
     make DESTDIR="$pkgdir/" install
 
     # Install systemd service
-    install -Dm644 "$srcdir/$pkgname-$pkgver/scripts/goodbyedpi.service" \
+    install -Dm644 "$startdir/scripts/goodbyedpi.service" \
         "$pkgdir/usr/lib/systemd/system/goodbyedpi.service"
 
     # Install default configuration
-    install -Dm644 "$srcdir/$pkgname-$pkgver/config/goodbyedpi.conf.example" \
-        "$pkgdir/etc/goodbyedpi/goodbyedpi.conf"
+    if [[ -f "$startdir/config/goodbyedpi.conf.example" ]]; then
+        install -Dm644 "$startdir/config/goodbyedpi.conf.example" \
+            "$pkgdir/etc/goodbyedpi/goodbyedpi.conf"
+    fi
 
     # Install documentation
-    install -Dm644 "$srcdir/$pkgname-$pkgver/README.md" \
+    install -Dm644 "$startdir/README.md" \
         "$pkgdir/usr/share/doc/$pkgname/README.md"
 
     # Install license
-    install -Dm644 "$srcdir/$pkgname-$pkgver/LICENSE" \
-        "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    if [[ -f "$startdir/LICENSE" ]]; then
+        install -Dm644 "$startdir/LICENSE" \
+            "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    fi
 
-    # Install scripts
-    install -Dm755 "$srcdir/$pkgname-$pkgver/scripts/install.sh" \
+    # Install helper scripts
+    install -Dm755 "$startdir/scripts/install.sh" \
         "$pkgdir/usr/share/$pkgname/install.sh"
-    install -Dm755 "$srcdir/$pkgname-$pkgver/scripts/uninstall.sh" \
+    install -Dm755 "$startdir/scripts/uninstall.sh" \
         "$pkgdir/usr/share/$pkgname/uninstall.sh"
 
-    # Create directories
+    # Create necessary runtime directories
     mkdir -p "$pkgdir/var/log"
     mkdir -p "$pkgdir/run"
 
-    # Set permissions
+    # Ensure correct permissions
     chmod 755 "$pkgdir/usr/bin/goodbyedpi"
-    chmod 644 "$pkgdir/etc/goodbyedpi/goodbyedpi.conf"
 
-    # Install default blacklist
+    # Initialize an empty blacklist if it doesn't exist
     install -Dm644 /dev/null "$pkgdir/etc/goodbyedpi/blacklist.txt"
 }

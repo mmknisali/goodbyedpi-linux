@@ -12,6 +12,7 @@ goodbyedpi: \
   CMakeFiles/goodbyedpi.dir/src/evasion/header_mangle.c.o \
   CMakeFiles/goodbyedpi.dir/src/evasion/fake_packets.c.o \
   CMakeFiles/goodbyedpi.dir/src/evasion/sni_extractor.c.o \
+  CMakeFiles/goodbyedpi.dir/src/evasion/turkey_specific.c.o \
   CMakeFiles/goodbyedpi.dir/src/tracking/conntrack.c.o \
   CMakeFiles/goodbyedpi.dir/src/tracking/dns_tracker.c.o \
   CMakeFiles/goodbyedpi.dir/src/tracking/ttl_tracker.c.o \
@@ -21,6 +22,7 @@ goodbyedpi: \
   CMakeFiles/goodbyedpi.dir/src/utils/hash.c.o \
   CMakeFiles/goodbyedpi.dir/src/utils/string_utils.c.o \
   CMakeFiles/goodbyedpi.dir/src/utils/net_utils.c.o \
+  CMakeFiles/goodbyedpi.dir/src/capture/netfilter_capture.c.o \
   /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/../../../../lib/libnetfilter_queue.so \
   /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/../../../../lib/libnfnetlink.so \
   /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/../../../../lib/libmnl.so \
@@ -45,8 +47,8 @@ goodbyedpi: \
   /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/libgcc.a \
   /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/crtendS.o \
   /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/../../../../lib/crtn.o \
-  /usr/lib/libm.so.6 \
-  /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/../../../../lib/libgcc_s.so.1 \
+  /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/../../../../lib/libnfnetlink.so \
+  /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/../../../../lib/libmnl.so \
   /usr/lib/ld-linux-x86-64.so.2
 
 /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/../../../../lib/Scrt1.o:
@@ -75,6 +77,8 @@ CMakeFiles/goodbyedpi.dir/src/evasion/fake_packets.c.o:
 
 CMakeFiles/goodbyedpi.dir/src/evasion/sni_extractor.c.o:
 
+CMakeFiles/goodbyedpi.dir/src/evasion/turkey_specific.c.o:
+
 CMakeFiles/goodbyedpi.dir/src/tracking/conntrack.c.o:
 
 CMakeFiles/goodbyedpi.dir/src/tracking/dns_tracker.c.o:
@@ -92,6 +96,8 @@ CMakeFiles/goodbyedpi.dir/src/utils/hash.c.o:
 CMakeFiles/goodbyedpi.dir/src/utils/string_utils.c.o:
 
 CMakeFiles/goodbyedpi.dir/src/utils/net_utils.c.o:
+
+CMakeFiles/goodbyedpi.dir/src/capture/netfilter_capture.c.o:
 
 /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/../../../../lib/libnetfilter_queue.so:
 
@@ -141,8 +147,8 @@ CMakeFiles/goodbyedpi.dir/src/utils/net_utils.c.o:
 
 /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/../../../../lib/crtn.o:
 
-/usr/lib/libm.so.6:
+/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/../../../../lib/libnfnetlink.so:
 
-/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/../../../../lib/libgcc_s.so.1:
+/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/../../../../lib/libmnl.so:
 
 /usr/lib/ld-linux-x86-64.so.2:

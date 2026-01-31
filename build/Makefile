@@ -194,6 +194,30 @@ goodbyedpi/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/goodbyedpi.dir/build.make CMakeFiles/goodbyedpi.dir/build
 .PHONY : goodbyedpi/fast
 
+src/capture/netfilter_capture.o: src/capture/netfilter_capture.c.o
+.PHONY : src/capture/netfilter_capture.o
+
+# target to build an object file
+src/capture/netfilter_capture.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/goodbyedpi.dir/build.make CMakeFiles/goodbyedpi.dir/src/capture/netfilter_capture.c.o
+.PHONY : src/capture/netfilter_capture.c.o
+
+src/capture/netfilter_capture.i: src/capture/netfilter_capture.c.i
+.PHONY : src/capture/netfilter_capture.i
+
+# target to preprocess a source file
+src/capture/netfilter_capture.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/goodbyedpi.dir/build.make CMakeFiles/goodbyedpi.dir/src/capture/netfilter_capture.c.i
+.PHONY : src/capture/netfilter_capture.c.i
+
+src/capture/netfilter_capture.s: src/capture/netfilter_capture.c.s
+.PHONY : src/capture/netfilter_capture.s
+
+# target to generate assembly for a file
+src/capture/netfilter_capture.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/goodbyedpi.dir/build.make CMakeFiles/goodbyedpi.dir/src/capture/netfilter_capture.c.s
+.PHONY : src/capture/netfilter_capture.c.s
+
 src/capture/packet_utils.o: src/capture/packet_utils.c.o
 .PHONY : src/capture/packet_utils.o
 
@@ -689,6 +713,9 @@ help:
 	@echo "... package_source"
 	@echo "... rebuild_cache"
 	@echo "... goodbyedpi"
+	@echo "... src/capture/netfilter_capture.o"
+	@echo "... src/capture/netfilter_capture.i"
+	@echo "... src/capture/netfilter_capture.s"
 	@echo "... src/capture/packet_utils.o"
 	@echo "... src/capture/packet_utils.i"
 	@echo "... src/capture/packet_utils.s"

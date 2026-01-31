@@ -112,7 +112,6 @@ int get_default_interface(char *interface, size_t interface_len)
 {
     if (!interface || interface_len == 0) return -1;
     
-    // Try to read default route from /proc/net/route
     FILE *fp = fopen("/proc/net/route", "r");
     if (!fp) {
         log_error("Failed to open /proc/net/route: %s", strerror(errno));
@@ -120,35 +119,29 @@ int get_default_interface(char *interface, size_t interface_len)
     }
     
     char line[256];
-    char *iface = NULL;
+    int found = 0;
     
-    // Skip header line
+    // Skip header
     if (!fgets(line, sizeof(line), fp)) {
         fclose(fp);
         return -1;
     }
     
-    // Read routes
     while (fgets(line, sizeof(line), fp)) {
         char iface_name[32];
         unsigned long destination;
         
         if (sscanf(line, "%31s %lx", iface_name, &destination) == 2) {
-            if (destination == 0) { // Default route
-                iface = iface_name;
+            if (destination == 0) { // Default gateway
+                safe_string_copy(interface, iface_name, interface_len);
+                found = 1;
                 break;
             }
         }
     }
     
     fclose(fp);
-    
-    if (iface) {
-        safe_string_copy(interface, iface, interface_len);
-        return 0;
-    }
-    
-    return -1;
+    return found ? 0 : -1;
 }
 
 // Get interface IP address

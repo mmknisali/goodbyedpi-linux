@@ -6,5 +6,5 @@ C_DEFINES = -DENABLE_SYSTEMD
 
 C_INCLUDES = -I/home/ali/workspace/GoodbyeDPI-Turkey-Linux/goodbyedpi-linux/src -I/home/ali/workspace/GoodbyeDPI-Turkey-Linux/goodbyedpi-linux/src/include
 
-C_FLAGS =  -Wall -Wextra -Wpedantic -O2 -D_FORTIFY_SOURCE=2 -fstack-protector-strong -fPIE -pie -Wformat -Wformat-security -Wl,-z,relro,-z,now -std=gnu99
+C_FLAGS = -march=x86-64 -mtune=generic -O2 -pipe -fno-plt -fexceptions         -Wp,-D_FORTIFY_SOURCE=3 -Wformat -Werror=format-security         -fstack-clash-protection -fcf-protection         -fno-omit-frame-pointer -mno-omit-leaf-frame-pointer -g -ffile-prefix-map=/home/ali/workspace/GoodbyeDPI-Turkey-Linux/goodbyedpi-linux/src=/usr/src/debug/goodbyedpi-linux -flto=auto -Wall -Wextra -Wpedantic -O2 -D_FORTIFY_SOURCE=2 -fstack-protector-strong -fPIE -pie -Wformat -Wformat-security -Wl,-z,relro,-z,now -O3 -DNDEBUG -std=gnu99
 

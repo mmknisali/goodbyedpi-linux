@@ -223,8 +223,13 @@ int netfilter_get_packet_metadata(struct nfq_data *nfa, uint32_t *packet_id,
         
         if (in_dev) *in_dev = nfq_get_indev(nfa);
         if (out_dev) *out_dev = nfq_get_outdev(nfa);
-        if (hw_addr) *hw_addr = nfq_get_packet_hw(nfa, hw_addrlen);
-        if (hw_addrlen) *hw_addrlen = nfq_get_packet_hw(nfa, hw_addrlen);
+
+        // Correct API usage for hardware address
+        struct nfqnl_msg_packet_hw *hw = nfq_get_packet_hw(nfa);
+        if (hw && hw_addr) {
+            memcpy(hw_addr, hw->hw_addr, 8);
+            if (hw_addrlen) *hw_addrlen = ntohs(hw->hw_addrlen);
+        }
     }
     
     return 0;

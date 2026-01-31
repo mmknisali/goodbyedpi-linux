@@ -8,6 +8,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
+  "/home/ali/workspace/GoodbyeDPI-Turkey-Linux/goodbyedpi-linux/src/capture/netfilter_capture.c" "CMakeFiles/goodbyedpi.dir/src/capture/netfilter_capture.c.o" "gcc" "CMakeFiles/goodbyedpi.dir/src/capture/netfilter_capture.c.o.d"
   "/home/ali/workspace/GoodbyeDPI-Turkey-Linux/goodbyedpi-linux/src/capture/packet_utils.c" "CMakeFiles/goodbyedpi.dir/src/capture/packet_utils.c.o" "gcc" "CMakeFiles/goodbyedpi.dir/src/capture/packet_utils.c.o.d"
   "/home/ali/workspace/GoodbyeDPI-Turkey-Linux/goodbyedpi-linux/src/capture/raw_socket.c" "CMakeFiles/goodbyedpi.dir/src/capture/raw_socket.c.o" "gcc" "CMakeFiles/goodbyedpi.dir/src/capture/raw_socket.c.o.d"
   "/home/ali/workspace/GoodbyeDPI-Turkey-Linux/goodbyedpi-linux/src/core/config.c" "CMakeFiles/goodbyedpi.dir/src/core/config.c.o" "gcc" "CMakeFiles/goodbyedpi.dir/src/core/config.c.o.d"

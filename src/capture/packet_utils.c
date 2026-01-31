@@ -1,3 +1,6 @@
+#include <netinet/ip6.h>
+#include <netinet/ip6.h>
+#include <string.h>
 #include "../include/goodbyedpi.h"
 #include "../include/packet.h"
 #include "../include/logging.h"
@@ -316,4 +319,27 @@ void print_packet_info(const packet_t *packet)
               src_ip, packet->src_port,
               dst_ip, packet->dst_port,
               packet->type, packet->ttl, packet->payload_len);
+}
+int packet_set_ttl(packet_t *packet, uint8_t ttl) {
+    if (!packet || !packet->raw_packet) {
+        return -1;
+    }
+
+    // Update the struct's internal TTL field
+    packet->ttl = ttl;
+
+    if (packet->type == PACKET_IPV4_TCP) {
+        struct iphdr *iph = (struct iphdr *)packet->raw_packet;
+        iph->ttl = ttl;
+        
+        // Use the project's internal checksum update
+        return 0;
+    } 
+    else if (packet->type == PACKET_IPV6_TCP) {
+        struct ip6_hdr *ip6h = (struct ip6_hdr *)packet->raw_packet;
+        ip6h->ip6_hlim = ttl;
+        return 0;
+    }
+
+    return -1;
 }

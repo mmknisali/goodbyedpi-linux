@@ -4,8 +4,13 @@
 #include "goodbyedpi.h"
 
 // Packet parsing constants
+#ifndef IPPROTO_TCP
 #define IPPROTO_TCP 6
+#endif
+
+#ifndef IPPROTO_UDP
 #define IPPROTO_UDP 17
+#endif
 
 // TCP flags
 #define TCP_FIN 0x01

@@ -278,4 +278,11 @@ char *extract_sni_from_packet(const packet_t *packet);
 // Additional Linux-specific includes
 #include <libgen.h>
 
+/* Turkey-specific evasion constants */
+#define TURKEY_HTTP_FRAGMENT_SIZE 2
+#define TURKEY_HTTPS_FRAGMENT_SIZE 2
+#define TURKEY_MAX_FRAGMENT_SIZE 5
+#define DEFAULT_HTTP_FRAGMENT_SIZE 40
+#define DEFAULT_HTTPS_FRAGMENT_SIZE 40
+
 #endif // GOODBYEDPI_H
